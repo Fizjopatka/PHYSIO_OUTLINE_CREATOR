@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/colors.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="css/style.css">
+        <title>FizjoKonspektor 9000</title>
+    </head>
+    <body> 
+        <main>
+            <div class="container">
+                <!--TITLE-->
+                <div class="title-navbar navbar sticky-top">
+                    FizjoKonspektor 9000 
+                </div>
+                <!--FORM-->
+                <form>
+                    <!--CREATE-->
+                    <div class="d-flex justify-content-center">
+                        <button id="submit-1" type="submit">Stwórz pdf</button>
+                    </div>
+                    <!--MENU-->
+                    <div class="menu">
+                        <div class="navbar small-title">
+                            Podstawowe informacje
+                        </div>
+                        <div class="input-1">
+                            <br>
+                            <label for="patient-name">Zestaw ćwiczeń dla  </label>
+                            <input type="text" id="patient-name" name="patient-name"><br><br>
+                            <label for="start-date">Data rozpoczęcia ćwiczeń:</label>
+                            <input type="date" id="start-date" name="start-date"> <br><br>
+                            <label for="frequency">Częstotliwość ćwiczeń:</label> 
+                            <span><input type="radio" class="week" id="week-1" name="frequency" value="raz w tygodniu"><label for="week-1">raz w tygodniu </label></span>
+                            <span><input type="radio" class="week" id="week-2" name="frequency" value="dwa razy w tygodniu"><label for="week-2">dwa razy w tygodniu</label></span>
+                            <span><input type="radio" class="week" id="week-3" name="frequency" value="trzy/cztery razy w tygodniu" checked><label for="week-3">trzy/cztery razy w tygodniu</label></span>
+                            <span><input type="radio" class="week" id="week-4" name="frequency" value="pięć razy w tygodniu"><label for="week-4">pięć razy w tygodniu</label></span>
+                            <span><input type="radio" class="week" id="week-5" name="frequency" value="codziennie"><label for="week-5">codziennie</label></span><br><br>
+                            <label for="comments">Uwagi: </label>
+                            <input type="text" id="comments" name="comments"><br><br>
+                        </div>
+                        <div class="navbar small-title">
+                            Wybór ćwiczeń
+                        </div>
+                        <div class="exercise-table">
+                            <div class="navbar very-small-title">
+                                Zbiór ćwiczeń rozciągających
+                            </div>
+                            <div id="stretch-exercise">
+                            </div>
+                            <div class="navbar very-small-title">
+                                Zbiór ćwiczeń wzmacniających
+                            </div>
+                            <div id="strength-exercise">
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+                <!--CONTENT-->
+                <div class="d-flex justify-content-center">
+                    <div class= "content-box-pdf">
+                        <div id="content-pdf" class="content-pdf" crossorigin="anonymous">
+                            <div class="patient-name-pdf navbar"></div>
+                            <div class="description">
+                                <div class="date-pdf-box navbar">
+                                    <div class="date-pdf"></div>
+                                </div>
+                                <div class="frequency-pdf-box navbar">
+                                    <div class="frequency-pdf"></div>
+                                </div>
+                                <div class="comments-pdf-box navbar">
+                                    <div class="comments-pdf"></div>
+                                </div>
+                            </div>
+                            <div id="exercise-pdf"></div>
+                        </div>
+                        <div id="exercise-pdf2" class="new-page"></div>
+                        <div id="exercise-pdf3" class="new-page"></div>
+                    </div>
+                </div>
+                <!--FOOTER-->
+                <!--<div class="bottom-navbar navbar fixed-bottom">
+                    © 2021 Copyright: Patrycja &nbsp; <a href="https://www.instagram.com/fizjopatka" target="_blank"> 'fizjopatka' </a> &nbsp; Hańdziuk
+                </div>-->
+            </div>
+        </main>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js" integrity="sha512-ToRWKKOvhBSS8EtqSflysM/S7v9bB9V0X3B1+E7xo7XZBEZCPL3VX5SFIp8zxY19r7Sz0svqQVbAOx+QcLQSAQ==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js" integrity="sha512-OqcrADJLG261FZjar4Z6c4CfLqd861A3yPNMb+vRQ2JwzFT49WT4lozrh3bcKxHxtDTgNiqgYbEUStzvZQRfgQ==" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>

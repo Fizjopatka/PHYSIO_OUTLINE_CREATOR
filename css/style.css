@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    background-color: var(--light-blue);
+}
+
+.container {
+    background-color: var(--white);
+    padding: 0;
+    height: 100%;
+}
+
+.title-navbar {
+    height: 7vh;
+    width: 100%;
+    background-color: var(--light-blue);
+    font-size: 2rem;
+    color: var(--white);
+    justify-content: center;
+}
+
+.bottom-navbar {
+    height: 7vh;
+    width: 100%;
+    background-color: var(--light-blue);
+    font-size: 1rem;
+    color: var(--white);
+    justify-content: center;
+}
+
+.bottom-navbar a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+.small-title {
+    height: 5rem;
+    width: 100%;
+    font-size: 1.5rem;
+    justify-content: center;
+    color: var(--white);
+    background-color: var(--moon-evening);
+}
+
+.input-1 {
+    padding: 1rem;
+}
+
+.input-1 form label {
+    margin-left: 0.3rem;
+}
+
+.input-1 form span {
+    white-space: nowrap;
+}
+
+.week {
+    margin-left: 1rem;
+}
+
+.very-small-title {
+    height: 3rem;
+    width: 100%;
+    font-size: 1.2rem;
+    justify-content: center;
+    color: var(--white);
+    background-color: var(--lavender);
+}
+
+.exercise-cell {
+    min-height: 15rem;
+    border-bottom: 2px solid var(--lavender);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.middle-row {
+    height: 200px;
+    width: 50vh;
+}
+
+.exercise-check {
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--grey-80);
+}
+.exercise-check:hover {
+    background-color: var(--grey);
+}
+
+/* PDF */
+
+.content-pdf, .new-page {
+    display: none;
+    min-width: 20cm;
+    min-height: 28.7cm;
+    text-align: left;
+}
+
+.content-box-pdf {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.patient-name-pdf {
+    font-size: 1.5rem;
+    min-height: 2cm;
+    width: 100%;
+    justify-content: center;
+    color: black;
+    background-color: var(--jade-50);
+    top: 0px;
+}
+
+.date-pdf-box, .frequency-pdf-box, .comments-pdf-box {
+    font-size: 1.3rem;
+    min-height: 1.725cm;
+    width: 100%;
+    justify-content: left;
+    color: black;
+
+}
+
+.description {
+    background-color: var(--teal-50);
+}
+
+.date-pdf, .frequency-pdf, .comments-pdf {
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+.exercise-box-pdf {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 7.175cm;
+    border-bottom: 2px solid var(--teal-50);
+}
+
+.exercise-pdf-column{
+    min-width: 10cm;
+}
