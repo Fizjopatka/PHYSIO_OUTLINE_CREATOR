@@ -45,77 +45,77 @@ submit1.addEventListener('click', (e)=>{
 //EXERCISES
 const stretchExerciseCollection = [
     {
-        title: "Ćwiczenie rozciągające mm. kulszowo-goleniowe",
+        title: "Rozciąganie mm. kulszowo-goleniowych",
         size: 1,
         description: "tu jest opis",
         image: "img/test.png",
-        repetitions: "10x strona"
+        repetitions: "10 x strona"
     },
     {
-        title: "Ćwiczenie rozciągające mm. pośladkowe",
+        title: "Rozciąganie mm. pośladkowych",
         size: 1,
         description: "tu jest opis 2",
         image: "img/test.png",
-        repetitions: "15x 2"
+        repetitions: "40' x strona"
     },
     {
-        title: "Ćwiczenie rozciągające mm. piersiowe",
+        title: "Rozciąganie mm. piersiowych",
         size: 1,
         description: "tu jest opis 3",
         image: "img/test.png",
-        repetitions: "15x 3"
+        repetitions: "40' x strona"
     },
     {
-        title: "Ćwiczenie rozciągające mm. piersiowe",
+        title: "Rozciąganie mm. czworogłowych",
         size: 1,
-        description: "tu jest opis 3",
+        description: "tu jest opis 4",
         image: "img/test.png",
-        repetitions: "15x 3"
+        repetitions: "40' x strona"
     },
     {
-        title: "Ćwiczenie rozciągające mm. piersiowe",
+        title: "Rozciąganie mm. czworobocznych lędźwi",
         size: 1,
-        description: "tu jest opis 3",
+        description: "tu jest opis 5",
         image: "img/test.png",
-        repetitions: "15x 3"
+        repetitions: "10 x strona x 4'"
     }
 ];
 
 const strengthExerciseCollection = [
     {
-        title: "tytuł s",
+        title: "Wzmacnianie mm. brzucha",
         size: 1,
         description: "tu jest opis",
         image: "img/test.png",
-        repetitions: "15x"
+        repetitions: "10 x 4'"
     },
     {
-        title: "tytuł 2 s",
+        title: "Wzmacnianie mm. grzbietu",
         size: 1,
         description: "tu jest opis 2",
         image: "img/test.png",
-        repetitions: "15x 2"
+        repetitions: "10 x strona x 4'"
     },
     {
-        title: "tytuł 3 s",
+        title: "Wzmacnianie mm. posturalnych",
         size: 1,
         description: "tu jest opis 3",
         image: "img/test.png",
-        repetitions: "15x 3"
+        repetitions: "3 x 30'"
     },
     {
-        title: "tytuł 3 s",
+        title: "Wzmacnianie mm. pośladkowych",
         size: 1,
         description: "tu jest opis 3",
         image: "img/test.png",
-        repetitions: "15x 3"
+        repetitions: "10 x 4'"
     },
     {
-        title: "tytuł 3 s",
+        title: "Wzmacnianie mm. dna miednicy, mm. głębokich tułowia",
         size: 1,
         description: "tu jest opis 3",
         image: "img/test.png",
-        repetitions: "15x 3"
+        repetitions: "10 x 4'"
     }
 ];
 
@@ -161,13 +161,13 @@ function fillCells(exerciseCollection, exerciseDivId, type){
         exerciseDivId.appendChild(createNewCell(`exercise${type}Number${n}`))
         document.getElementById(`exercise${type}Number${n}`).innerHTML = `
         <div class="exercise-cell row">
-        <button onclick="chooseExercise('${type}', '${n}')" class="exercise-check" id= "${type}${n}check"></button>
-        <div class="row middle-row">
-            <div class="exercise-title col-12">${exerciseCollection[n].title}</div>
-            <div class="exercise-description col-12">${exerciseCollection[n].description}</div>
-            <div class="exercise-repetitions col-12">liczba powtórzeń:<input type="text" id="input${type}${n}" value="${exerciseCollection[n].repetitions}" name="powtórzenia"> </div>
-        </div>
-        <div class="exercise-image"><div style="background-image:url("${exerciseCollection[n].image}"></div>
+            <button onclick="chooseExercise('${type}', '${n}')" class="exercise-check" id= "${type}${n}check"></button>
+            <div class="row middle-row">
+                <div class="exercise-title col-12">${exerciseCollection[n].title}</div>
+                <div class="exercise-description col-12">${exerciseCollection[n].description}</div>
+                <div class="exercise-repetitions col-12">liczba powtórzeń:<input type="text" id="input${type}${n}" value="${exerciseCollection[n].repetitions}" name="powtórzenia"> </div>
+            </div>
+            <div class="exercise-image"><img src="${exerciseCollection[n].image}"></div>
         </div>`;
         n++;
     };
@@ -194,6 +194,7 @@ function chooseExercise(type, n, exPdf){
                 </div>
             </div>
         </div>`;
+        console.log(type[n].image)
         //SWAP BUTTON COLOR
         document.getElementById(`${idButton}${n}check`).style.backgroundColor = 'var(--jade)';
         //APPEND CHILD + INNER HTML
