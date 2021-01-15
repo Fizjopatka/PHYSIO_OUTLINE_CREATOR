@@ -11,6 +11,7 @@ const exercisePdf = document.getElementById('exercise-pdf');
 const exercisePdf2 = document.getElementById('exercise-pdf2');
 const exercisePdf3 = document.getElementById('exercise-pdf3');
 let size = 1;
+let queueNumber = 0;
 
 //LISTENERS
 submit1.addEventListener('click', (e)=>{
@@ -49,35 +50,45 @@ const stretchExerciseCollection = [
         size: 1,
         description: "tu jest opis",
         image: "img/test.png",
-        repetitions: "10 x strona"
+        repetitions: "10 x strona",
+        trigger: false,
+        queueNumber: 0
     },
     {
         title: "Rozciąganie mm. pośladkowych",
         size: 1,
         description: "tu jest opis 2",
         image: "img/test.png",
-        repetitions: "40' x strona"
+        repetitions: "40' x strona",
+        trigger: false,
+        queueNumber: 0
     },
     {
         title: "Rozciąganie mm. piersiowych",
         size: 1,
         description: "tu jest opis 3",
         image: "img/test.png",
-        repetitions: "40' x strona"
+        repetitions: "40' x strona",
+        trigger: false,
+        queueNumber: 0
     },
     {
         title: "Rozciąganie mm. czworogłowych",
         size: 1,
         description: "tu jest opis 4",
         image: "img/test.png",
-        repetitions: "40' x strona"
+        repetitions: "40' x strona",
+        trigger: false,
+        queueNumber: 0
     },
     {
         title: "Rozciąganie mm. czworobocznych lędźwi",
         size: 1,
         description: "tu jest opis 5",
         image: "img/test.png",
-        repetitions: "10 x strona x 4'"
+        repetitions: "10 x strona x 4'",
+        trigger: false,
+        queueNumber: 0
     }
 ];
 
@@ -87,35 +98,45 @@ const strengthExerciseCollection = [
         size: 1,
         description: "tu jest opis",
         image: "img/test.png",
-        repetitions: "10 x 4'"
+        repetitions: "10 x 4'",
+        trigger: false,
+        queueNumber: 0
     },
     {
         title: "Wzmacnianie mm. grzbietu",
         size: 1,
         description: "tu jest opis 2",
         image: "img/test.png",
-        repetitions: "10 x strona x 4'"
+        repetitions: "10 x strona x 4'",
+        trigger: false,
+        queueNumber: 0
     },
     {
         title: "Wzmacnianie mm. posturalnych",
         size: 1,
         description: "tu jest opis 3",
         image: "img/test.png",
-        repetitions: "3 x 30'"
+        repetitions: "3 x 30'",
+        trigger: false,
+        queueNumber: 0
     },
     {
         title: "Wzmacnianie mm. pośladkowych",
         size: 1,
         description: "tu jest opis 3",
         image: "img/test.png",
-        repetitions: "10 x 4'"
+        repetitions: "10 x 4'",
+        trigger: false,
+        queueNumber: 0
     },
     {
         title: "Wzmacnianie mm. dna miednicy, mm. głębokich tułowia",
         size: 1,
         description: "tu jest opis 3",
         image: "img/test.png",
-        repetitions: "10 x 4'"
+        repetitions: "10 x 4'",
+        trigger: false,
+        queueNumber: 0
     }
 ];
 
@@ -194,9 +215,52 @@ function chooseExercise(type, n, exPdf){
                 </div>
             </div>
         </div>`;
-        console.log(type[n].image)
-        //SWAP BUTTON COLOR
-        document.getElementById(`${idButton}${n}check`).style.backgroundColor = 'var(--jade)';
+        //SWAP BUTTON COLOR AND ADDING NUMBER
+        if (!type[n].trigger) {
+            document.getElementById(`${idButton}${n}check`).style.backgroundColor = 'var(--jade)';
+            type[n].trigger = true;
+            queueNumber = queueNumber +1;
+            type[n].queueNumber = queueNumber;
+            document.getElementById(`${idButton}${n}check`).innerHTML = queueNumber;
+
+        } else if(type[n].trigger) {
+            document.getElementById(`${idButton}${n}check`).style.backgroundColor = 'var(--grey)';
+            type[n].trigger = false;
+            queueNumber = queueNumber -1;
+            document.getElementById(`${idButton}${n}check`).innerHTML = "";
+            if (idButton === "stretch") {
+                subtractAllQueue(stretchExerciseCollection, strengthExerciseCollection, "strength", type[n].queueNumber, n);
+            } else if (idButton === "strength") {
+                subtractAllQueue(strengthExerciseCollection, stretchExerciseCollection, "stretch", type[n].queueNumber, n);
+            }
+        };
+
+        function subtractAllQueue(type, type2, idButton2, clickNumber, n){
+            let x = 0;
+            type[n].queueNumber = 0;
+
+            while (x < type.length) {
+                if (type[x].queueNumber > clickNumber) {
+                    type[x].queueNumber = type[x].queueNumber - 1;
+                };
+                if (type2[x].queueNumber > clickNumber) {
+                    type2[x].queueNumber = type2[x].queueNumber - 1;
+                };
+                document.getElementById(`${idButton}${x}check`).innerHTML = type[x].queueNumber;
+                document.getElementById(`${idButton2}${x}check`).innerHTML = type2[x].queueNumber;
+                //SWAP 0 TO ""
+                if (type[x].queueNumber === 0) {
+                    document.getElementById(`${idButton}${x}check`).innerHTML = "";
+                }
+                if (type2[x].queueNumber === 0) {
+                    document.getElementById(`${idButton2}${x}check`).innerHTML = "";
+                }
+
+                x++;
+            };
+
+        }
+
         //APPEND CHILD + INNER HTML
         exPdf.appendChild(createNewCell(`${idButton}Div${n}`));
         document.getElementById(`${idButton}Div${n}`).innerHTML = exerciseDiv;
