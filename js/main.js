@@ -40,9 +40,6 @@ submit1.addEventListener('click', (e)=>{
     e.preventDefault();
 });
 
-
-
-
 //EXERCISES
 const stretchExerciseCollection = [
     {
@@ -144,14 +141,44 @@ const strengthExerciseCollection = [
 //SCREEN, SAVE AND DOWNLOAD PDF
 
 function genPDF() {
+    const doc = new jsPDF();
+
+    function setPage(divName, flexNumber) {
+        let i = 1;
+
+        exercisePdf2.appendChild(createNewCell(divName))
+        while (i < flexNumber){    
+            let firstExercise = exercisePdf.firstChild;
+            if (firstExercise === null) {
+                return
+            };
+            document.getElementById(divName).append(firstExercise);
+            i++
+        };
+
+    }
+
+    setPage('page-1', 4);
     html2canvas(contentPdf).then(canvas=> {
-        const doc = new jsPDF();
         const img = canvas.toDataURL('image/png');
 
         doc.addImage(img, 'JPEG', 4, 5);
-        doc.save('test.pdf');
+        if (size < 5) {
+            doc.save('test.pdf');
+        } else if (size > 4) {
+            setPage('page-2', 5);
+            const page2 = document.getElementById('page-2');
+
+            html2canvas(page2).then(canvas=> {
+                const img = canvas.toDataURL('image/png');
+                doc.addPage();
+                doc.addImage(img, 'JPEG', 4, 5);
+                doc.save('test.pdf');
+            });
+        };
+
     });
-}
+};
 
 //RADIO INPUT FUNCTION
 function getInfoAboutFrequency() {
@@ -179,10 +206,13 @@ function fillCells(exerciseCollection, exerciseDivId, type){
     let n = 0;
 
     while (n < exerciseCollection.length){
-        exerciseDivId.appendChild(createNewCell(`exercise${type}Number${n}`))
-        document.getElementById(`exercise${type}Number${n}`).innerHTML = `
-        <div class="exercise-cell row">
-            <button onclick="chooseExercise('${type}', '${n}')" class="exercise-check" id= "${type}${n}check"></button>
+        exerciseDivId.appendChild(createNewCell(`exercise${type}Number${n}`));
+        const newCell = document.getElementById(`exercise${type}Number${n}`);
+
+        newCell.classList.add('exercise-container')
+        newCell.innerHTML = `
+        <div class="exercise-cell row ml-4 mr-4">
+            <button onclick="chooseExercise('${type}', '${n}')" class="exercise-check col-12 col-md-1 mt-2 mb-2" id= "${type}${n}check"></button>
             <div class="row middle-row">
                 <div class="exercise-title col-12">${exerciseCollection[n].title}</div>
                 <div class="exercise-description col-12">${exerciseCollection[n].description}</div>
@@ -194,13 +224,9 @@ function fillCells(exerciseCollection, exerciseDivId, type){
     };
 };
 
-
 function chooseExercise(type, n, exPdf){
-    if(size<4){
-        exPdf = exercisePdf;
-    } else if(size >3) {
-        exPdf = exercisePdf2;
-    };
+    exPdf = exercisePdf;
+
     function createExerciseDiv(idButton){
         const exerciseDiv = `
         <div class="exercise-box-pdf">
@@ -222,17 +248,31 @@ function chooseExercise(type, n, exPdf){
             queueNumber = queueNumber +1;
             type[n].queueNumber = queueNumber;
             document.getElementById(`${idButton}${n}check`).innerHTML = queueNumber;
-
-        } else if(type[n].trigger) {
+            //APPEND CHILD + INNER HTML
+            exPdf.appendChild(createNewCell(`${idButton}Div${n}`));
+            document.getElementById(`${idButton}Div${n}`).innerHTML = exerciseDiv;
+            //INPUT REPETITIONS
+            document.getElementById(`${idButton[n].repetitions}Div`).innerHTML = 'liczba powtórzeń: '+ document.getElementById(`input${idButton}${n}`).value;
+            event.preventDefault();
+            //RETURN SIZE
+            console.log(document.getElementById(`${idButton}${n}check`).innerHTML)
+            return size = size+ type[n].size;
+        } else if (type[n].trigger) {
             document.getElementById(`${idButton}${n}check`).style.backgroundColor = 'var(--grey)';
             type[n].trigger = false;
             queueNumber = queueNumber -1;
             document.getElementById(`${idButton}${n}check`).innerHTML = "";
+            //REMOVE CHILD 
+            document.getElementById(`${idButton}Div${n}`).remove();
+            event.preventDefault();
             if (idButton === "stretch") {
                 subtractAllQueue(stretchExerciseCollection, strengthExerciseCollection, "strength", type[n].queueNumber, n);
             } else if (idButton === "strength") {
                 subtractAllQueue(strengthExerciseCollection, stretchExerciseCollection, "stretch", type[n].queueNumber, n);
-            }
+            };
+
+            //RETURN SIZE
+            return size = size - type[n].size;
         };
 
         function subtractAllQueue(type, type2, idButton2, clickNumber, n){
@@ -259,17 +299,8 @@ function chooseExercise(type, n, exPdf){
                 x++;
             };
 
-        }
-
-        //APPEND CHILD + INNER HTML
-        exPdf.appendChild(createNewCell(`${idButton}Div${n}`));
-        document.getElementById(`${idButton}Div${n}`).innerHTML = exerciseDiv;
-        //INPUT REPETITIONS
-        document.getElementById(`${idButton[n].repetitions}Div`).innerHTML = 'liczba powtórzeń: '+ document.getElementById(`input${idButton}${n}`).value;
-        event.preventDefault();
-        //RETURN SIZE
-        return size = size+ type[n].size;
-    }
+        };
+    };
 
     if(type === 'stretch'){
         const idButton = 'stretch';

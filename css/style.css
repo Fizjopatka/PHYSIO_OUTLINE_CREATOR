@@ -75,7 +75,6 @@ body {
 
 .exercise-cell {
     min-height: 15rem;
-    border-bottom: 2px solid var(--lavender);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -90,9 +89,14 @@ body {
     width: 5rem;
     height: 5rem;
     background-color: var(--grey-80);
+    font-size: 1.5rem;
 }
 .exercise-check:hover {
     background-color: var(--grey);
+}
+
+.exercise-container {
+    border-bottom: 2px solid var(--lavender);
 }
 
 /* PDF */
