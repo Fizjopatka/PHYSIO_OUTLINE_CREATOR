@@ -50,6 +50,7 @@ body {
 
 .input-1 {
     padding: 1rem;
+    padding-left: 1.5rem;
 }
 
 .input-1 form label {
@@ -93,6 +94,7 @@ body {
 }
 .exercise-check:hover {
     background-color: var(--grey);
+    transition: 0.3s;
 }
 
 .exercise-container {
@@ -113,6 +115,7 @@ body {
 
 .ready-button:hover {
     opacity: 1;
+    transition: 0.5s;
 }
 
 /* PDF */
@@ -136,7 +139,7 @@ body {
     width: 100%;
     justify-content: center;
     color: black;
-    background-color: var(--jade-50);
+    border-bottom: 2px solid var(--lavender);
     top: 0px;
 }
 
@@ -150,22 +153,32 @@ body {
 }
 
 .description {
-    background-color: var(--teal-50);
+    border-bottom: 2px solid var(--lavender);
 }
 
 .date-pdf, .frequency-pdf, .comments-pdf {
-    margin-left: 5rem;
-    margin-right: 5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .exercise-box-pdf {
+    padding: 1rem;
     display: flex;
-    justify-content: space-around;
     align-items: center;
     min-height: 7.175cm;
     border-bottom: 2px solid var(--teal-50);
 }
 
 .exercise-pdf-column{
-    min-width: 10cm;
+    min-width: 12cm;
+}
+
+.exercise-title-pdf{
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.exercise-repetitions-pdf {
+    transform: translate(0, 4cm);
 }

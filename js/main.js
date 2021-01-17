@@ -172,9 +172,23 @@ function genPDF() {
 
             html2canvas(page2).then(canvas=> {
                 const img = canvas.toDataURL('image/png');
+
                 doc.addPage();
                 doc.addImage(img, 'JPEG', 4, 5);
-                doc.save('test.pdf');
+                if (size < 9) {
+                    doc.save('test.pdf');
+                } else if (size > 8){
+                    setPage('page-3', 9);
+                    const page3 = document.getElementById('page-3');
+
+                    html2canvas(page3).then(canvas=> {
+                        const img = canvas.toDataURL('image/png');
+        
+                        doc.addPage();
+                        doc.addImage(img, 'JPEG', 4, 5);
+                        doc.save('test.pdf');
+                    });
+                };
             });
         };
 
@@ -225,9 +239,7 @@ function fillCells(exerciseCollection, exerciseDivId, type){
     };
 };
 
-function chooseExercise(type, n, exPdf){
-    exPdf = exercisePdf;
-
+function chooseExercise(type, n){
     function createExerciseDiv(idButton){
         const exerciseDiv = `
         <div class="exercise-box-pdf">
@@ -250,13 +262,12 @@ function chooseExercise(type, n, exPdf){
             type[n].queueNumber = queueNumber;
             document.getElementById(`${idButton}${n}check`).innerHTML = queueNumber;
             //APPEND CHILD + INNER HTML
-            exPdf.appendChild(createNewCell(`${idButton}Div${n}`));
+            exercisePdf.appendChild(createNewCell(`${idButton}Div${n}`));
             document.getElementById(`${idButton}Div${n}`).innerHTML = exerciseDiv;
             //INPUT REPETITIONS
             document.getElementById(`${idButton[n].repetitions}Div`).innerHTML = 'liczba powtórzeń: '+ document.getElementById(`input${idButton}${n}`).value;
             event.preventDefault();
             //RETURN SIZE
-            console.log(document.getElementById(`${idButton}${n}check`).innerHTML)
             return size = size+ type[n].size;
         } else if (type[n].trigger) {
             document.getElementById(`${idButton}${n}check`).style.backgroundColor = 'var(--grey)';
