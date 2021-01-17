@@ -14,11 +14,12 @@ let size = 1;
 let queueNumber = 0;
 
 //LISTENERS
-submit1.addEventListener('click', (e)=>{
+readyButton.addEventListener('click', (e)=>{
     const patientName = document.getElementById('patient-name').value;
     const startDate = document.getElementById('start-date').value;
     const comments = document.getElementById('comments').value;
 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     function dateCheck(date){
         if (date.length >  8) {
             formattedDate = date[8]+date[9]+"-"+date[5]+date[6]+"-"+date[0]+date[1]+date[2]+date[3];
@@ -27,7 +28,6 @@ submit1.addEventListener('click', (e)=>{
             return formattedDate = "";
         };
     };
-    
     dateCheck(startDate);
     $('#content-pdf').css('display', 'inline-block');
     $('#exercise-pdf2').css('display', 'inline-block');
@@ -35,13 +35,10 @@ submit1.addEventListener('click', (e)=>{
     datePdf.innerHTML = `Data rozpoczęcia ćwiczeń: ${formattedDate}`;
     frequencyPdf.innerHTML = `Ćwiczenia należy wykonywać ${getInfoAboutFrequency()}.`;
     commentsPdf.innerHTML = `Uwagi: ${comments}`;
-
     genPDF();
     e.preventDefault();
-});
+    $('#ready-button').css('display', 'none');
 
-readyButton.addEventListener('click', ()=>{
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 })
 
 //EXERCISES
