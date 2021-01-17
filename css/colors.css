@@ -1,4 +1,5 @@
 :root {
+    /* GREEN, BLUE */
     --jade: rgb(105, 198, 155);
     --jade-50: rgb(105, 198, 155, 0.5);
     --patin: rgb(105, 198, 178);
@@ -9,6 +10,10 @@
     --sky-blue: rgb(105, 148, 198);
     --moon-evening: rgb(105, 125, 198);
     --lavender: rgb(108, 105, 198);
+    /*RED*/
+    --dead-salmon: rgb(198, 132, 105);
+    /* BLACK, GREY, WHITE */
+    --black: rgb(0, 0, 0);
     --grey-80: rgb(152, 152, 160, 0.8);
     --grey: rgb(152, 152, 160);
     --white: rgb(255, 255, 255);

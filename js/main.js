@@ -9,7 +9,7 @@ const commentsPdf = document.querySelector('.comments-pdf');
 const submit1 = document.getElementById('submit-1');
 const exercisePdf = document.getElementById('exercise-pdf');
 const exercisePdf2 = document.getElementById('exercise-pdf2');
-const exercisePdf3 = document.getElementById('exercise-pdf3');
+const readyButton = document.getElementById('ready-button');
 let size = 1;
 let queueNumber = 0;
 
@@ -40,13 +40,17 @@ submit1.addEventListener('click', (e)=>{
     e.preventDefault();
 });
 
+readyButton.addEventListener('click', ()=>{
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+})
+
 //EXERCISES
 const stretchExerciseCollection = [
     {
         title: "Rozciąganie mm. kulszowo-goleniowych",
         size: 1,
         description: "tu jest opis",
-        image: "img/test.png",
+        image: "img/stretch0.png",
         repetitions: "10 x strona",
         trigger: false,
         queueNumber: 0
@@ -55,7 +59,7 @@ const stretchExerciseCollection = [
         title: "Rozciąganie mm. pośladkowych",
         size: 1,
         description: "tu jest opis 2",
-        image: "img/test.png",
+        image: "img/stretch1.png",
         repetitions: "40' x strona",
         trigger: false,
         queueNumber: 0
@@ -64,7 +68,7 @@ const stretchExerciseCollection = [
         title: "Rozciąganie mm. piersiowych",
         size: 1,
         description: "tu jest opis 3",
-        image: "img/test.png",
+        image: "img/stretch2.png",
         repetitions: "40' x strona",
         trigger: false,
         queueNumber: 0
@@ -73,7 +77,7 @@ const stretchExerciseCollection = [
         title: "Rozciąganie mm. czworogłowych",
         size: 1,
         description: "tu jest opis 4",
-        image: "img/test.png",
+        image: "img/stretch3.png",
         repetitions: "40' x strona",
         trigger: false,
         queueNumber: 0
@@ -82,7 +86,7 @@ const stretchExerciseCollection = [
         title: "Rozciąganie mm. czworobocznych lędźwi",
         size: 1,
         description: "tu jest opis 5",
-        image: "img/test.png",
+        image: "img/stretch4.png",
         repetitions: "10 x strona x 4'",
         trigger: false,
         queueNumber: 0
@@ -91,46 +95,46 @@ const stretchExerciseCollection = [
 
 const strengthExerciseCollection = [
     {
-        title: "Wzmacnianie mm. brzucha",
+        title: "Dotykanie barków w podporze przodem",
         size: 1,
         description: "tu jest opis",
-        image: "img/test.png",
-        repetitions: "10 x 4'",
-        trigger: false,
-        queueNumber: 0
-    },
-    {
-        title: "Wzmacnianie mm. grzbietu",
-        size: 1,
-        description: "tu jest opis 2",
-        image: "img/test.png",
-        repetitions: "10 x strona x 4'",
-        trigger: false,
-        queueNumber: 0
-    },
-    {
-        title: "Wzmacnianie mm. posturalnych",
-        size: 1,
-        description: "tu jest opis 3",
-        image: "img/test.png",
+        image: "img/strength0.png",
         repetitions: "3 x 30'",
         trigger: false,
         queueNumber: 0
     },
     {
-        title: "Wzmacnianie mm. pośladkowych",
+        title: "Naprzemianstronne unoszenie ręki i nogi w klęku podpartym",
+        size: 1,
+        description: "tu jest opis 2",
+        image: "img/strength1.png",
+        repetitions: "10 x strona x 4'",
+        trigger: false,
+        queueNumber: 0
+    },
+    {
+        title: "Unoszenie bioder leżąc tyłem z ugiętymi nogami",
         size: 1,
         description: "tu jest opis 3",
-        image: "img/test.png",
+        image: "img/strength2.png",
+        repetitions: "3 x 30'",
+        trigger: false,
+        queueNumber: 0
+    },
+    {
+        title: "Przywiedzenie ramion leżąc przodem",
+        size: 1,
+        description: "tu jest opis 3",
+        image: "img/strength3.png",
         repetitions: "10 x 4'",
         trigger: false,
         queueNumber: 0
     },
     {
-        title: "Wzmacnianie mm. dna miednicy, mm. głębokich tułowia",
+        title: "Deska na boku",
         size: 1,
         description: "tu jest opis 3",
-        image: "img/test.png",
+        image: "img/strength4.png",
         repetitions: "10 x 4'",
         trigger: false,
         queueNumber: 0
