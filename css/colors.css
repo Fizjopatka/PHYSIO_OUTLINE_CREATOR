@@ -1,20 +1,23 @@
 :root {
     /* GREEN, BLUE */
     --jade: rgb(105, 198, 155);
-    --jade-50: rgb(105, 198, 155, 0.5);
+    --jade-80: rgb(111, 180, 148);
     --patin: rgb(105, 198, 178);
     --patin-50: rgb(105, 198, 178, 0.5);
     --teal: rgb(105, 195, 198);
     --teal-50: rgb(105, 195, 198, 0.5);
-    --light-blue: rgb(105, 171, 198);
+    --light-blue: rgb(66, 107, 124);
     --sky-blue: rgb(105, 148, 198);
     --moon-evening: rgb(105, 125, 198);
     --lavender: rgb(108, 105, 198);
+    --lavender-50: rgba(108, 105, 198, 0.5);
     /*RED*/
     --dead-salmon: rgb(198, 132, 105);
+    --dead-salmon-80: rgba(189, 131, 108);
     /* BLACK, GREY, WHITE */
     --black: rgb(0, 0, 0);
     --grey-80: rgb(152, 152, 160, 0.8);
     --grey: rgb(152, 152, 160);
     --white: rgb(255, 255, 255);
+    --white-80: rgba(239, 239, 239);
 }

@@ -5,23 +5,43 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="css/colors.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Molle:ital@1&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="css/style.css">
-        <title>FizjoKonspektor 9000</title>
+        <title>PhysioOutline</title>
     </head>
     <body> 
         <main>
             <div class="container">
-                <!--TITLE-->
-                <div class="title-navbar navbar sticky-top pb-5">
-                    FizjoKonspektor 9000 
-                </div>
+                <!--NAVBAR-->
+                <nav class="navbar title-navbar sticky-top navbar-expand-lg">
+
+                    <p class="pt-2 mt-lg-3 ml-lg-3 mr-lg-3">PhysioOutline</p>
+                    
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+                        <img class="hamburger" src="img/list.png">
+                    </button>
+        
+                    <div class="collapse navbar-collapse collapse-menu mr-lg-3 pt-lg-4" id="mainmenu">
+                        <ul class="navbar-nav buttons-container">
+                            <li class="nav-item mb-2">
+                                <button class="w-100 white-button">Jak to<br>działa?</button>
+                            </li>
+                            <li class="nav-item ml-lg-2 mb-2">
+                                <button class="w-100 green-button" id="ready-menu-button">Wygeneruj<br>PDF</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="w-100 red-button ml-lg-2" id="restart-button">Rozpocznij<br>od nowa</button>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
                 <!--FORM-->
                 <form>
                     <!--MENU-->
                     <div class="menu">
-                        <div class="navbar small-title">
+                        <div class="navbar small-title small-title-1">
                             Podstawowe informacje
                         </div>
                         <div class="input-1">
@@ -58,29 +78,33 @@
                     </div>
                 </form>
                 <!--CONTENT-->
-                <div class="d-flex justify-content-center">
-                    <div class= "content-box-pdf">
-                        <div id="content-pdf" class="content-pdf" crossorigin="anonymous">
-                            <div class="patient-name-pdf navbar"></div>
-                            <div class="description">
-                                <div class="date-pdf-box navbar">
-                                    <div class="date-pdf"></div>
+                <div class="container">
+                    <div class="d-flex">
+                        <div class= "content-box-pdf">
+                            <div id="content-pdf" class="content-pdf" crossorigin="anonymous">
+                                <div class="patient-name-pdf navbar"></div>
+                                <div class="tag-pdf">PhysioOutline</div>
+                                <div class="description">
+                                    <div class="date-pdf-box navbar">
+                                        <div class="date-pdf"></div>
+                                    </div>
+                                    <div class="frequency-pdf-box navbar">
+                                        <div class="frequency-pdf"></div>
+                                    </div>
+                                    <div class="comments-pdf-box navbar">
+                                        <div class="comments-pdf"></div>
+                                    </div>
                                 </div>
-                                <div class="frequency-pdf-box navbar">
-                                    <div class="frequency-pdf"></div>
-                                </div>
-                                <div class="comments-pdf-box navbar">
-                                    <div class="comments-pdf"></div>
-                                </div>
+                                <div class="tag-pdf tag-pdf-2">Patrycja Hańdziuk  All rights reserved. </div>
+                                <div id="exercise-pdf2" class="new-page"></div>
                             </div>
-                            <div id="exercise-pdf2" class="new-page"></div>
+                            <div id="exercise-pdf" class="new-page"></div>
                         </div>
-                        <div id="exercise-pdf" class="new-page"></div>
                     </div>
                 </div>
                 <!--READY-->
                 <div class="ready">
-                    <button id="ready-button" class="col-12 ready-button">Gotowe</button>
+                    <button id="ready-button" class="col-12 ready-button">Wygeneruj PDF</button>
                 </div>
                 <!--FOOTER-->
                 <div class="bottom-navbar navbar">

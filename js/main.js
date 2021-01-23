@@ -10,36 +10,18 @@ const submit1 = document.getElementById('submit-1');
 const exercisePdf = document.getElementById('exercise-pdf');
 const exercisePdf2 = document.getElementById('exercise-pdf2');
 const readyButton = document.getElementById('ready-button');
+const readyMenuButton = document.getElementById('ready-menu-button');
+const restartButton = document.getElementById('restart-button');
 let size = 1;
 let queueNumber = 0;
 
 //LISTENERS
-readyButton.addEventListener('click', (e)=>{
-    const patientName = document.getElementById('patient-name').value;
-    const startDate = document.getElementById('start-date').value;
-    const comments = document.getElementById('comments').value;
-
+readyButton.addEventListener('click', saveAll);
+readyMenuButton.addEventListener('click', saveAll);
+restartButton.addEventListener('click', ()=> {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    function dateCheck(date){
-        if (date.length >  8) {
-            formattedDate = date[8]+date[9]+"-"+date[5]+date[6]+"-"+date[0]+date[1]+date[2]+date[3];
-            return formattedDate
-        } else {
-            return formattedDate = "";
-        };
-    };
-    dateCheck(startDate);
-    $('#content-pdf').css('display', 'inline-block');
-    $('#exercise-pdf2').css('display', 'inline-block');
-    patientNamePdf.innerHTML = `Zestaw ćwiczeń dla ${patientName}`;
-    datePdf.innerHTML = `Data rozpoczęcia ćwiczeń: ${formattedDate}`;
-    frequencyPdf.innerHTML = `Ćwiczenia należy wykonywać ${getInfoAboutFrequency()}.`;
-    commentsPdf.innerHTML = `Uwagi: ${comments}`;
-    genPDF();
-    e.preventDefault();
-    $('#ready-button').css('display', 'none');
-
-})
+    setTimeout(function(){ location.reload()}, 500);
+});
 
 //EXERCISES
 const stretchExerciseCollection = [
@@ -227,11 +209,11 @@ function fillCells(exerciseCollection, exerciseDivId, type){
         newCell.classList.add('exercise-container')
         newCell.innerHTML = `
         <div class="exercise-cell row ml-4 mr-4">
-            <button onclick="chooseExercise('${type}', '${n}')" class="exercise-check col-12 col-md-1 mt-2 mb-2" id= "${type}${n}check"></button>
+            <button onclick="chooseExercise('${type}', '${n}')" class="exercise-check col-8 col-md-1 mt-2 mb-2" id= "${type}${n}check"></button>
             <div class="row middle-row">
                 <div class="exercise-title col-12">${exerciseCollection[n].title}</div>
                 <div class="exercise-description col-12">${exerciseCollection[n].description}</div>
-                <div class="exercise-repetitions col-12">liczba powtórzeń:<input type="text" id="input${type}${n}" value="${exerciseCollection[n].repetitions}" name="powtórzenia"> </div>
+                <div class="exercise-repetitions col-12">liczba powtórzeń:<input type="text" class="ml-2" id="input${type}${n}" value="${exerciseCollection[n].repetitions}" name="powtórzenia"> </div>
             </div>
             <div class="exercise-image"><img src="${exerciseCollection[n].image}"></div>
         </div>`;
@@ -244,12 +226,12 @@ function chooseExercise(type, n){
         const exerciseDiv = `
         <div class="exercise-box-pdf">
             <div class="row">
-                <div class="col-7 exercise-pdf-column">
-                    <div class="exercise-title-pdf col-12">${type[n].title}</div>
-                    <div class="exercise-description-pdf col-12">${type[n].description}</div>
-                    <div id="${idButton[n].repetitions}Div" class="exercise-repetitions-pdf col-12">liczba powtórzeń: ${type[n].repetitions}</div>
+                <div class="exercise-pdf-column">
+                    <div class="exercise-title-pdf mt-1">${type[n].title}</div>
+                    <div class="exercise-description-pdf">${type[n].description}</div>
+                    <div id="${idButton[n].repetitions}Div" class="exercise-repetitions-pdf">liczba powtórzeń: ${type[n].repetitions}</div>
                 </div>
-                <div class="col-5">
+                <div>
                         <img src=${type[n].image}>
                 </div>
             </div>
@@ -323,6 +305,35 @@ function chooseExercise(type, n){
         type = strengthExerciseCollection;
         createExerciseDiv(idButton);
     };
+}
+
+function saveAll (event){
+    const patientName = document.getElementById('patient-name').value;
+    const startDate = document.getElementById('start-date').value;
+    const comments = document.getElementById('comments').value;
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    function dateCheck(date){
+        if (date.length >  8) {
+            formattedDate = date[8]+date[9]+"-"+date[5]+date[6]+"-"+date[0]+date[1]+date[2]+date[3];
+            return formattedDate
+        } else {
+            return formattedDate = "";
+        };
+    };
+    dateCheck(startDate);
+    $('#content-pdf').css('display', 'inline-block');
+    $('#exercise-pdf2').css('display', 'inline-block');
+    patientNamePdf.innerHTML = `Zestaw ćwiczeń dla ${patientName}`;
+    datePdf.innerHTML = `Data rozpoczęcia ćwiczeń: ${formattedDate}`;
+    frequencyPdf.innerHTML = `Ćwiczenia należy wykonywać ${getInfoAboutFrequency()}.`;
+    commentsPdf.innerHTML = `Uwagi: ${comments}`;
+    genPDF();
+    event.preventDefault();
+    $('#ready-button').css('display', 'none');
+    readyMenuButton.disabled = true;
+    $('.exercise-check').prop('disabled', true);
+    $('#restart-button').css('animation', 'clickMe 2s infinite')
 }
 
 //APP
