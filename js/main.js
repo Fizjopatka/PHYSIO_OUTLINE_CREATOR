@@ -12,6 +12,7 @@ const exercisePdf2 = document.getElementById('exercise-pdf2');
 const readyButton = document.getElementById('ready-button');
 const readyMenuButton = document.getElementById('ready-menu-button');
 const restartButton = document.getElementById('restart-button');
+let patientName = '';
 let size = 1;
 let queueNumber = 0;
 
@@ -144,10 +145,11 @@ function genPDF() {
     setPage('page-1', 4);
     html2canvas(contentPdf).then(canvas=> {
         const img = canvas.toDataURL('image/png');
+        const pdfName = `zestaw-ćwiczeń-dla-${patientName}-PhysioOutline.pdf`;
 
         doc.addImage(img, 'JPEG', 4, 5);
         if (size < 5) {
-            doc.save('test.pdf');
+            doc.save(pdfName);
         } else if (size > 4) {
             setPage('page-2', 5);
             const page2 = document.getElementById('page-2');
@@ -158,7 +160,7 @@ function genPDF() {
                 doc.addPage();
                 doc.addImage(img, 'JPEG', 4, 5);
                 if (size < 9) {
-                    doc.save('test.pdf');
+                    doc.save(pdfName);
                 } else if (size > 8){
                     setPage('page-3', 9);
                     const page3 = document.getElementById('page-3');
@@ -168,7 +170,7 @@ function genPDF() {
         
                         doc.addPage();
                         doc.addImage(img, 'JPEG', 4, 5);
-                        doc.save('test.pdf');
+                        doc.save(pdfName);
                     });
                 };
             });
@@ -308,9 +310,9 @@ function chooseExercise(type, n){
 }
 
 function saveAll (event){
-    const patientName = document.getElementById('patient-name').value;
     const startDate = document.getElementById('start-date').value;
     const comments = document.getElementById('comments').value;
+    patientName = document.getElementById('patient-name').value;
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
     function dateCheck(date){
@@ -334,7 +336,7 @@ function saveAll (event){
     readyMenuButton.disabled = true;
     $('.exercise-check').prop('disabled', true);
     $('#restart-button').css('animation', 'clickMe 2s infinite')
-}
+};
 
 //APP
 fillCells(stretchExerciseCollection, stretchExercise, 'stretch');
