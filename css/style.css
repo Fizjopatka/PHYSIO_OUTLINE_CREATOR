@@ -5,8 +5,8 @@
 }
 
 body {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.2rem;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.3rem;
     background-color: var(--light-blue);
 }
 
@@ -94,7 +94,7 @@ button:focus {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     justify-content: flex-end;
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 form {
@@ -173,8 +173,12 @@ form {
     align-items: center;
 }
 
+.exercise-description {
+    text-align: justify;
+}
+
 .middle-row {
-    height: 200px;
+    min-height: 200px;
     width: 50vh;
 }
 
@@ -268,20 +272,22 @@ form {
 }
 
 .exercise-title-pdf, .exercise-title {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: bold;
     letter-spacing: 1px;
     margin-bottom: 0.2rem;
 }
 
 .exercise-title-pdf {
-    min-height: 2cm;
-    max-height: 2cm;
+    min-height: 1.8cm;
+    max-height: 1.8cm;
 }
 
 .exercise-description-pdf {
     min-height: 4cm;
     max-height: 4cm;
+    font-size: 1rem;
+    text-align: justify;
 }
 
 .tag-pdf {
@@ -295,7 +301,7 @@ form {
 }
 
 .tag-pdf-2 {
-    font-family: 'Patrick Hand SC', cursive;
+    font-family: 'Patrick Hand', cursive;
     font-size: 0.7rem;
 }
 

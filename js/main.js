@@ -29,45 +29,45 @@ const stretchExerciseCollection = [
     {
         title: "Rozciąganie mm. kulszowo-goleniowych",
         size: 1,
-        description: "tu jest opis",
+        description: "Leżymy na plecach, zginamy nogę w biodrze do 90°, dłonie układamy na tylnej częsci uda, a następnie wykonujemy wyprost nogi w kolanie, aż pojawi się uczucie rozciągania pod kolanem.",
         image: "img/stretch0.png",
-        repetitions: "10 x strona",
+        repetitions: "10 x 4sek x strona",
         trigger: false,
         queueNumber: 0
     },
     {
         title: "Rozciąganie mm. pośladkowych",
         size: 1,
-        description: "tu jest opis 2",
+        description: "Leżymy na plecach, jedna noga jest zgięta w kolanie do 90°, druga jest oparta łydką o kolano pierwszej. Trzymając za kolano zgiętej nogi obydwiema rękoma przyciągamy ją do siebie, aż pojawi się uczucie rozciągania w okolicy pośladka.",
         image: "img/stretch1.png",
-        repetitions: "40' x strona",
+        repetitions: "40sek x strona",
         trigger: false,
         queueNumber: 0
     },
     {
         title: "Rozciąganie mm. piersiowych",
         size: 1,
-        description: "tu jest opis 3",
+        description: "Leżymy na boku, noga znajdująca się u góry jest zgięta ok. 90° i opiera się kolanem o mate, ręka znajdująca się u góry jest wyprostowana i ustawiona po skosie, próbujemy dotknać grzbietem dłoni do maty, aż pojawi się uczucie rozciągania w okolicy pachy, pleców, bądź ręki.",
         image: "img/stretch2.png",
-        repetitions: "40' x strona",
+        repetitions: "40sek x strona",
         trigger: false,
         queueNumber: 0
     },
     {
         title: "Rozciąganie mm. czworogłowych",
         size: 1,
-        description: "tu jest opis 4",
+        description: "Ustawiamy się w klęku jednonóż, ręka po stronie nogi zakrocznej jest oparta o matę na wysokości stopy nogi wykrocznej. Nogę zakroczną mocno wysuwamy do tyłu. Wolną ręką przyciągamy podudzie nogi zakrocznej chwytając w okolicy stawu skokowego. Przyciągamy podudzie do momentu, aż pojawi się uczucie rozciągania z przodu uda nogi zakrocznej.",
         image: "img/stretch3.png",
-        repetitions: "40' x strona",
+        repetitions: "40sek x strona",
         trigger: false,
         queueNumber: 0
     },
     {
         title: "Rozciąganie mm. czworobocznych lędźwi",
         size: 1,
-        description: "tu jest opis 5",
+        description: "Stoimy, nogi są są ustawione 'na krzyż', rozciągamy bok po stronie nogi, która znajduje się z tyłu. Biodro po stronie rozciąganej wypychamy w bok oraz unosimy bokiem w górę rękę po stronie rozciąganej. Wypychamy biodro w bok do momentu, aż pojawi się uczucie rozciągania w okolicy biodra lub pleców.",
         image: "img/stretch4.png",
-        repetitions: "10 x strona x 4'",
+        repetitions: "10 x 4sek x strona",
         trigger: false,
         queueNumber: 0
     }
@@ -214,8 +214,8 @@ function fillCells(exerciseCollection, exerciseDivId, type){
             <button onclick="chooseExercise('${type}', '${n}')" class="exercise-check col-8 col-md-1 mt-2 mb-2" id= "${type}${n}check"></button>
             <div class="row middle-row">
                 <div class="exercise-title col-12">${exerciseCollection[n].title}</div>
-                <div class="exercise-description col-12">${exerciseCollection[n].description}</div>
-                <div class="exercise-repetitions col-12">liczba powtórzeń:<input type="text" class="ml-2" id="input${type}${n}" value="${exerciseCollection[n].repetitions}" name="powtórzenia"> </div>
+                <div class="exercise-description col-12 mb-3">${exerciseCollection[n].description}</div>
+                <div class="exercise-repetitions col-12 mb-2">liczba powtórzeń:<input type="text" class="ml-2" id="input${type}${n}" value="${exerciseCollection[n].repetitions}" name="powtórzenia"> </div>
             </div>
             <div class="exercise-image"><img src="${exerciseCollection[n].image}"></div>
         </div>`;
