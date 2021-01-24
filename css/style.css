@@ -16,7 +16,7 @@ body {
     height: 100%;
 }
 
-.title-navbar{
+.title-navbar {
     z-index: 2000;
     background-color: var(--light-blue);
     height: 6.3rem;
@@ -58,11 +58,11 @@ button:focus {
     background-color: var(--jade-80);
 }
 
-.white-button:hover{
+.white-button:hover {
     background-color: var(--white);
 }
 
-.red-button:hover{
+.red-button:hover {
     background-color: var(--dead-salmon);
 }
 
@@ -71,8 +71,14 @@ button:focus {
 }
 
 @keyframes clickMe {
-    from {box-shadow: 0px 0px 10px var(--black)};
-    to {box-shadow: 0px 0px 50px var(--black)};
+    from {
+        box-shadow: 0px 0px 10px var(--black);
+        background-color: var(--dead-salmon);
+    };
+    to {
+        box-shadow: 0px 0px 50px var(--black);
+        background-color: var(--dead-salmon-80);
+    };
 }
 
 .hamburger {
@@ -233,7 +239,7 @@ form {
 
 .how-it-work .box__content {
     background: var(--white);
-    min-height: 28rem;
+    min-height: 27rem;
     font-size: 1.2rem;
     padding: 1rem;
     position: relative;

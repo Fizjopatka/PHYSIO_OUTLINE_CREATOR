@@ -102,7 +102,7 @@ const strengthExerciseCollection = [
         queueNumber: 0
     },
     {
-        title: "Przywiedzenie ramion leżąc przodem",
+        title: "Wzmacnianie mm. grzbietu",
         size: 1,
         description: "Leżymy na brzuchu, ręce są wyprostowane w przód, kciuki skierowane w górę. Odrywamy ręce i głowe od materaca. Napinamy mięśnie grzbietu. Ręce, powolnym ruchem, przenosimy nad tłów kierując kciuki w dół. Następnie powoli wracamy do pozycji wyjściowej. ",
         image: "img/strength3.png",
@@ -347,6 +347,7 @@ function saveAll (event){
     readyMenuButton.disabled = true;
     $('.exercise-check').prop('disabled', true);
     $('#restart-button').css('animation', 'clickMe 2s infinite')
+    setTimeout(()=>{$('.content-box-pdf').css('display', 'none');}, 1000);
 };
 
 //APP
