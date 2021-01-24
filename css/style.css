@@ -186,10 +186,11 @@ form {
     width: 5rem;
     height: 5rem;
     background-color: var(--grey);
-    font-size: 2rem;
+    font-size: 2.5rem;
     border-radius: 5px;
     font-family: 'Patrick Hand SC', cursive;
     border: none;
+    font-weight: bold;
     box-shadow: 0px 0px 3px var(--black);  
 }
 .exercise-check:hover {
@@ -213,6 +214,86 @@ form {
 .ready-button:hover {
     background-color: var(--jade);
     transition: 0.5s;
+}
+/* HOW IT WORK */
+.how-it-work {
+    border-radius: 0px 4px 4px 0px;
+    right: -20.1rem;
+    padding: 4px 4px 4px 0px;
+    position: fixed;
+    top: 20vh;;
+    transition: transform 0.4s;
+    width: 20rem;
+    z-index: 99999;
+}
+
+.how-it-work:hover {
+    transform: translateX(-19.8rem);
+}
+
+.how-it-work .box__content {
+    background: var(--white);
+    min-height: 28rem;
+    font-size: 1.2rem;
+    padding: 1rem;
+    position: relative;
+    box-shadow: 0px 0px 5px var(--black);  
+    border-radius: 5px;
+}
+
+.how-it-work .box__title {
+    background: var(--white);
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 0.3rem;
+    line-height: 1.8rem;
+    position: absolute;
+    left: -9rem;
+    text-align: center;
+    top: 12rem;
+    transform: rotate(-90deg);
+    width: 15.1rem;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 3px solid var(--white);
+    box-shadow: 0px 0px 5px var(--black);  
+    font-family: 'Patrick Hand SC', cursive;
+}
+
+.box__description h3 {
+    font-family: 'Molle', cursive;
+    text-align: center;
+    margin: 0;
+}
+
+.box__description h4 {
+    text-align: center;
+}
+
+.box__description h5 {
+    text-align: justify;
+    line-height: 1.4;
+
+}
+
+.box__description div {
+    text-align: center;
+}
+
+.box__description div button {
+    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+    background-color: var(--dead-salmon-80);
+    border-radius: 5px;
+    border: 1px solid var(--black);
+    font-weight: bold;
+    font-family: 'Patrick Hand SC', cursive;
+    font-size: 1.6rem;
+    transition: 0.5s;
+    line-height: 0.9;
+}
+
+.box__description div button:hover {
+    background-color: var(--dead-salmon);
 }
 
 /* PDF */

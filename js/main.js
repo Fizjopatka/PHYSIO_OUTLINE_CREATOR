@@ -65,7 +65,7 @@ const stretchExerciseCollection = [
     {
         title: "Rozciąganie mm. czworobocznych lędźwi",
         size: 1,
-        description: "Stoimy, nogi są są ustawione 'na krzyż', rozciągamy bok po stronie nogi, która znajduje się z tyłu. Biodro po stronie rozciąganej wypychamy w bok oraz unosimy bokiem w górę rękę po stronie rozciąganej. Wypychamy biodro w bok do momentu, aż pojawi się uczucie rozciągania w okolicy biodra lub pleców.",
+        description: "Stoimy, nogi są ustawione 'na krzyż', rozciągamy bok po stronie nogi, która znajduje się z tyłu. Biodro po stronie rozciąganej wypychamy w bok oraz unosimy bokiem w górę rękę po stronie rozciąganej. Wypychamy biodro w bok do momentu, aż pojawi się uczucie rozciągania w okolicy biodra lub pleców.",
         image: "img/stretch4.png",
         repetitions: "10 x 4sek x strona",
         trigger: false,
@@ -77,53 +77,64 @@ const strengthExerciseCollection = [
     {
         title: "Dotykanie barków w podporze przodem",
         size: 1,
-        description: "tu jest opis",
+        description: "Ustawiamy się w podporze przodem, plecy są proste, brzuch napięty, dłonie znajdują się w lini prostej pod barkami. W spokojnym tempie odrywając jedną rękę od materaca dotykamy dłonią przeciwległego barku, wracamy do pozycji wyjściowej i robimy to samo drugą ręką. Ćwiczymy do końca wyznaczonego czasu.",
         image: "img/strength0.png",
-        repetitions: "3 x 30'",
+        repetitions: "3 x 30sek",
         trigger: false,
         queueNumber: 0
     },
     {
         title: "Naprzemianstronne unoszenie ręki i nogi w klęku podpartym",
         size: 1,
-        description: "tu jest opis 2",
+        description: "Ustawiamy sie w klęku podpartym. Dłonie znajdują się pod barkami, kolana pod biodrami. Unosimy rękę do wysokości barku, oraz nogę po przeciwległej stronie do wysokości biodra. Dłoń jest otwarta, ustawiona kciukiem w górę. Utrzymujemy pozycję przez wyznaczony czas. Wracamy do pozycji wyjściowej, a następnie robimy to samo drugą ręką i nogą. ",
         image: "img/strength1.png",
-        repetitions: "10 x strona x 4'",
+        repetitions: "10 x strona x 4sek",
         trigger: false,
         queueNumber: 0
     },
     {
         title: "Unoszenie bioder leżąc tyłem z ugiętymi nogami",
         size: 1,
-        description: "tu jest opis 3",
+        description: "Leżymy na plecach z nogami ugiętymi. Ręce są skrzyżowane na klatce piersiowej. Stopy w jednej linii. Unosimy biodra w górę. Brzuch i pośladki są napięte. Utrzymujemy uniesione biodra przez wyznaczony czas. Wracamy do pozycji wyjściowej.",
         image: "img/strength2.png",
-        repetitions: "3 x 30'",
+        repetitions: "10 x 4sek",
         trigger: false,
         queueNumber: 0
     },
     {
         title: "Przywiedzenie ramion leżąc przodem",
         size: 1,
-        description: "tu jest opis 3",
+        description: "Leżymy na brzuchu, ręce są wyprostowane w przód, kciuki skierowane w górę. Odrywamy ręce i głowe od materaca. Napinamy mięśnie grzbietu. Ręce, powolnym ruchem, przenosimy nad tłów kierując kciuki w dół. Następnie powoli wracamy do pozycji wyjściowej. ",
         image: "img/strength3.png",
-        repetitions: "10 x 4'",
+        repetitions: "15x",
         trigger: false,
         queueNumber: 0
     },
     {
         title: "Deska na boku",
         size: 1,
-        description: "tu jest opis 3",
+        description: "Leżymy na boku z przedramieniem opartym o mate. Łokieć znajduje się pod barkiem. Nogi są proste, stopa leży na stopie. Wolną rękę opieramy o biodro. Unosimy tułów tak, aby ciało utworzyło linie prostą. Brzuch jest napięty. Utrzymujemy pozycje przez wyznaczony czas.",
         image: "img/strength4.png",
-        repetitions: "10 x 4'",
+        repetitions: "3 x 15sek x strona",
         trigger: false,
         queueNumber: 0
     }
 ];
 
 //FUNCTIONS
-//SCREEN, SAVE AND DOWNLOAD PDF
+//CLOSE SIDE WINDOW 
+function closeWindow(){
+    $('.how-it-work').css('display', 'none');
+    sessionStorage.setItem('isClosed', 'true');
+}
 
+function checkWindow(){
+    if(sessionStorage.getItem('isClosed')){
+        $('.how-it-work').css('display', 'none');
+    };
+}
+
+//SCREEN, SAVE AND DOWNLOAD PDF
 function genPDF() {
     const doc = new jsPDF();
 
@@ -140,7 +151,7 @@ function genPDF() {
             i++
         };
 
-    }
+    };
 
     setPage('page-1', 4);
     html2canvas(contentPdf).then(canvas=> {
@@ -341,3 +352,4 @@ function saveAll (event){
 //APP
 fillCells(stretchExerciseCollection, stretchExercise, 'stretch');
 fillCells(strengthExerciseCollection, strengthExercise, 'strength');
+checkWindow();
