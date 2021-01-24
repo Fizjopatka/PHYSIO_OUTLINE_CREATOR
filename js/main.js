@@ -157,7 +157,7 @@ function genPDF() {
     html2canvas(contentPdf).then(canvas=> {
         const img = canvas.toDataURL('image/png');
         const pdfName = `zestaw-ćwiczeń-dla-${patientName}-PhysioOutline.pdf`;
-
+        //próbowałam zrobić to \/ lepiej, ale html2canvas wywala mi błędy, będę to poprawiać :D
         doc.addImage(img, 'JPEG', 4, 5);
         if (size < 5) {
             doc.save(pdfName);
