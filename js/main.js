@@ -287,7 +287,11 @@ function chooseExercise(type, n){
         </div>`;
         //SWAP BUTTON COLOR AND ADDING NUMBER
         if (!type[n].trigger) {
-            document.getElementById(`${idButton}${n}check`).style.backgroundColor = 'var(--jade)';
+            $(`#${idButton}${n}check`).hover(function(){
+                $(this).css("background-color", "var(--jade)");
+                }, function(){
+                $(this).css("background-color", "var(--jade-80)");
+            });
             type[n].trigger = true;
             queueNumber = queueNumber +1;
             type[n].queueNumber = queueNumber;
@@ -301,7 +305,11 @@ function chooseExercise(type, n){
             //RETURN SIZE
             return size = size+ type[n].size;
         } else if (type[n].trigger) {
-            document.getElementById(`${idButton}${n}check`).style.backgroundColor = 'var(--grey)';
+            $(`#${idButton}${n}check`).hover(function(){
+                $(this).css("background-color", "var(--grey-80)");
+                }, function(){
+                $(this).css("background-color", "var(--grey)");
+            });
             type[n].trigger = false;
             queueNumber = queueNumber -1;
             document.getElementById(`${idButton}${n}check`).innerHTML = "";
