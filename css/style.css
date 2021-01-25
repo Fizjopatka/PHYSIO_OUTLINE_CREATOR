@@ -24,10 +24,10 @@ body {
 }
 
 .title-navbar p {
-    color: var(--white);
+    color: var(--orange);
     font-size: 3.1rem;
     font-family: 'Molle', cursive;
-    text-shadow:0px 0px 8px var(--black);
+    text-shadow: 0px 2px 10px var(--black);
     letter-spacing: 2px;
 }
 
@@ -118,7 +118,8 @@ form {
     width: 100%;
     background-color: var(--light-blue);
     font-size: 1rem;
-    color: var(--white);
+    color: var(--orange);
+    text-shadow: 0px 0px 4px var(--black);;
     justify-content: center;
     font-family: 'Molle', cursive;
     text-shadow: 0px 0px 4px var(--black);
@@ -126,7 +127,8 @@ form {
 
 .bottom-navbar a {
     text-decoration: none;
-    color: var(--white);
+    color: var(--orange);
+    text-shadow: 0px 0px 4px var(--black);;
 }
 
 .small-title {
@@ -134,10 +136,11 @@ form {
     width: 100%;
     font-size: 2.2rem;
     justify-content: center;
-    color: var(--white);
     background-color: var(--moon-evening);
     font-family: 'Patrick Hand SC', cursive;
-    border-top: 2px solid var(--light-blue);
+    border-top: 10px solid var(--light-blue);
+    color: var(--white);
+    text-shadow: -1px 0 var(--black), 0 1px var(--black), 1px 0 var(--black), 0 -1px var(--black);
 }
 
 .small-title-1 {
@@ -168,8 +171,9 @@ form {
     font-size: 1.7rem;
     justify-content: center;
     color: var(--white);
-    background-color: var(--lavender);
+    background-color: var(--grey);
     font-family: 'Patrick Hand SC', cursive;
+    text-shadow: -1px 0 var(--black), 0 1px var(--black), 1px 0 var(--black), 0 -1px var(--black);
 }
 
 .exercise-cell {
@@ -197,7 +201,7 @@ form {
     font-family: 'Patrick Hand SC', cursive;
     border: none;
     font-weight: bold;
-    box-shadow: 0px 0px 3px var(--black);  
+    box-shadow: 0px 1px 4px var(--black);  
 }
 .exercise-check:hover {
     background-color: var(--grey-80);
@@ -205,7 +209,7 @@ form {
 }
 
 .exercise-container {
-    border-bottom: 2px solid var(--light-blue);
+    border-bottom: 4px solid var(--light-blue);
 }
 
 .ready-button {

@@ -29,9 +29,18 @@ const stretchExerciseCollection = [
     {
         title: "Rozciąganie mm. kulszowo-goleniowych",
         size: 1,
-        description: "Leżymy na plecach, zginamy nogę w biodrze do 90°, dłonie układamy na tylnej częsci uda, a następnie wykonujemy wyprost nogi w kolanie, aż pojawi się uczucie rozciągania pod kolanem.",
+        description: "Leżymy na plecach, zginamy nogę w biodrze do 90°, dłonie układamy na tylnej częsci uda, a następnie wykonujemy wyprost nogi w kolanie, zginamy stopę grzbietowo (do siebie), aż pojawi się uczucie rozciągania po tylnej stronie kolana, uda, bądź łydki. Utrzymujemy pozycję przez wyznaczony czas.",
         image: "img/stretch0.png",
         repetitions: "10 x 4sek x strona",
+        trigger: false,
+        queueNumber: 0
+    },
+    {
+        title: "Rozciąganie mm. kulszowo-goleniowych 2",
+        size: 1,
+        description: "Ustawiamy się w klęku podpartym. Prostujemy nogi w kolanach dociskając pięty do podłoża, aż pojawi się uczucie rozciągania po tylnej stronie kolana, uda, bądź łydki. Utrzymujemy pozycję przez wyznaczony czas.",
+        image: "img/stretch6.png",
+        repetitions: "10 x 4sek",
         trigger: false,
         queueNumber: 0
     },
@@ -56,7 +65,7 @@ const stretchExerciseCollection = [
     {
         title: "Rozciąganie mm. czworogłowych",
         size: 1,
-        description: "Ustawiamy się w klęku jednonóż, ręka po stronie nogi zakrocznej jest oparta o matę na wysokości stopy nogi wykrocznej. Nogę zakroczną mocno wysuwamy do tyłu. Wolną ręką przyciągamy podudzie nogi zakrocznej chwytając w okolicy stawu skokowego. Przyciągamy podudzie do momentu, aż pojawi się uczucie rozciągania z przodu uda nogi zakrocznej.",
+        description: "Ustawiamy się w klęku jednonóż, dłoń po stronie nogi zakrocznej jest oparta o matę na wysokości stopy nogi wykrocznej. Nogę zakroczną mocno wysuwamy do tyłu. Wolną ręką przyciągamy podudzie nogi zakrocznej chwytając w okolicy stawu skokowego. Przyciągamy podudzie do momentu, aż pojawi się uczucie rozciągania z przodu uda nogi zakrocznej.",
         image: "img/stretch3.png",
         repetitions: "40sek x strona",
         trigger: false,
@@ -70,12 +79,21 @@ const stretchExerciseCollection = [
         repetitions: "10 x 4sek x strona",
         trigger: false,
         queueNumber: 0
+    },
+    {
+        title: "Rozciąganie mm. biodrowo-lędźwiowych",
+        size: 1,
+        description: "Ustawiamy się w klęku jednonóż. Kolano nogi wykrocznej nie może przekraczać lini stopy, noga zakroczna wysunięta lekko do tyłu. Plecy są proste, ręce opierają się o stabilny przedmiot. Napinamy pośladek nogi zakrocznej, biodrem schodzimy w dół i lekko ku przodowi aż pojawi się uczucie rozciągania w okolicy biodra lub uda nogi zakrocznej.",
+        image: "img/stretch5.png",
+        repetitions: "40sek x strona",
+        trigger: false,
+        queueNumber: 0
     }
 ];
 
 const strengthExerciseCollection = [
     {
-        title: "Dotykanie barków w podporze przodem",
+        title: "Wzmacnianie mm. posturalnych, mm. pośladkowych, mm. grzbietu",
         size: 1,
         description: "Ustawiamy się w podporze przodem, plecy są proste, brzuch napięty, dłonie znajdują się w lini prostej pod barkami. W spokojnym tempie odrywając jedną rękę od materaca dotykamy dłonią przeciwległego barku, wracamy do pozycji wyjściowej i robimy to samo drugą ręką. Ćwiczymy do końca wyznaczonego czasu.",
         image: "img/strength0.png",
@@ -84,7 +102,7 @@ const strengthExerciseCollection = [
         queueNumber: 0
     },
     {
-        title: "Naprzemianstronne unoszenie ręki i nogi w klęku podpartym",
+        title: "Wzmacnianie mm. posturalnych, mm. pośladkowych, mm. grzbietu 2",
         size: 1,
         description: "Ustawiamy sie w klęku podpartym. Dłonie znajdują się pod barkami, kolana pod biodrami. Unosimy rękę do wysokości barku, oraz nogę po przeciwległej stronie do wysokości biodra. Dłoń jest otwarta, ustawiona kciukiem w górę. Utrzymujemy pozycję przez wyznaczony czas. Wracamy do pozycji wyjściowej, a następnie robimy to samo drugą ręką i nogą. ",
         image: "img/strength1.png",
@@ -93,7 +111,16 @@ const strengthExerciseCollection = [
         queueNumber: 0
     },
     {
-        title: "Unoszenie bioder leżąc tyłem z ugiętymi nogami",
+        title: "Wzmacnianie mm. posturalnych, mm. pośladkowych, mm. grzbietu 3",
+        size: 1,
+        description: "Ustawiamy sie w klęku podpartym. Dłonie znajdują się pod barkami, kolana pod biodrami. Odrywamy kolana od materaca na kilka centymetrów. Brzuch jest napięty. Utrzymujemy pozycję przez wyznaczony czas. ",
+        image: "img/strength6.png",
+        repetitions: "3 x 30sek",
+        trigger: false,
+        queueNumber: 0
+    },
+    {
+        title: "Wzmacnianie mm. pośladkowych, mm. głębokich tułowia",
         size: 1,
         description: "Leżymy na plecach z nogami ugiętymi. Ręce są skrzyżowane na klatce piersiowej. Stopy w jednej linii. Unosimy biodra w górę. Brzuch i pośladki są napięte. Utrzymujemy uniesione biodra przez wyznaczony czas. Wracamy do pozycji wyjściowej.",
         image: "img/strength2.png",
@@ -102,7 +129,7 @@ const strengthExerciseCollection = [
         queueNumber: 0
     },
     {
-        title: "Wzmacnianie mm. grzbietu",
+        title: "Wzmacnianie mm. grzbietu, mm. kończyn górnych",
         size: 1,
         description: "Leżymy na brzuchu, ręce są wyprostowane w przód, kciuki skierowane w górę. Odrywamy ręce i głowe od materaca. Napinamy mięśnie grzbietu. Ręce, powolnym ruchem, przenosimy nad tłów kierując kciuki w dół. Następnie powoli wracamy do pozycji wyjściowej. ",
         image: "img/strength3.png",
@@ -111,11 +138,20 @@ const strengthExerciseCollection = [
         queueNumber: 0
     },
     {
-        title: "Deska na boku",
+        title: "Wzmacnianie mm. posturanych, mm. brzucha, mm. stożka rotatorów",
         size: 1,
         description: "Leżymy na boku z przedramieniem opartym o mate. Łokieć znajduje się pod barkiem. Nogi są proste, stopa leży na stopie. Wolną rękę opieramy o biodro. Unosimy tułów tak, aby ciało utworzyło linie prostą. Brzuch jest napięty. Utrzymujemy pozycje przez wyznaczony czas.",
         image: "img/strength4.png",
         repetitions: "3 x 15sek x strona",
+        trigger: false,
+        queueNumber: 0
+    },
+    {
+        title: "Wzmacnianie mm. czworogłowych, mm. pośladkowych, mm. kulszowo-goleniowych",
+        size: 1,
+        description: "Stoimy, stopy ustawione na wprost, na szerokość bioder. Ręce wyprostowane przed sobą celem utrzymania równowagi. Powoli zaczynając od zgięcia w biodrach schodzimy do przysiadu pamiętając, żeby linia kolan nie przekroczyła lini palców u stóp. Plecy są proste. Kiedy zgięcie w kolanach wynosi ok 90° zatrzymujemy się na chwilę, a następnie powoli wracamy do pozycji wyjściowej.",
+        image: "img/strength5.png",
+        repetitions: "3 serie x 10",
         trigger: false,
         queueNumber: 0
     }
@@ -172,7 +208,7 @@ function genPDF() {
                 doc.addImage(img, 'JPEG', 4, 5);
                 if (size < 9) {
                     doc.save(pdfName);
-                } else if (size > 8){
+                } else if (size > 8) {
                     setPage('page-3', 9);
                     const page3 = document.getElementById('page-3');
 
@@ -284,8 +320,8 @@ function chooseExercise(type, n){
 
         function subtractAllQueue(type, type2, idButton2, clickNumber, n){
             let x = 0;
-            type[n].queueNumber = 0;
 
+            type[n].queueNumber = 0;
             while (x < type.length) {
                 if (type[x].queueNumber > clickNumber) {
                     type[x].queueNumber = type[x].queueNumber - 1;
