@@ -292,6 +292,7 @@ function chooseExercise(type, n){
                 }, function(){
                 $(this).css("background-color", "var(--jade-80)");
             });
+            $(`#${idButton}${n}check`).css("background-color", "var(--jade)");
             type[n].trigger = true;
             queueNumber = queueNumber +1;
             type[n].queueNumber = queueNumber;
@@ -310,6 +311,7 @@ function chooseExercise(type, n){
                 }, function(){
                 $(this).css("background-color", "var(--grey)");
             });
+            $(`#${idButton}${n}check`).css("background-color", "var(--grey)");
             type[n].trigger = false;
             queueNumber = queueNumber -1;
             document.getElementById(`${idButton}${n}check`).innerHTML = "";
