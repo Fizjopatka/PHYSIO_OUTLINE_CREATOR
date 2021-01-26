@@ -90,7 +90,6 @@ const stretchExerciseCollection = [
         queueNumber: 0
     }
 ];
-
 const strengthExerciseCollection = [
     {
         title: "Wzmacnianie mm. posturalnych, mm. pośladkowych, mm. grzbietu",
@@ -162,13 +161,13 @@ const strengthExerciseCollection = [
 function closeWindow(){
     $('.how-it-work').css('display', 'none');
     sessionStorage.setItem('isClosed', 'true');
-}
+};
 
 function checkWindow(){
     if(sessionStorage.getItem('isClosed')){
         $('.how-it-work').css('display', 'none');
     };
-}
+};
 
 //SCREEN, SAVE AND DOWNLOAD PDF
 function genPDF() {
@@ -186,9 +185,7 @@ function genPDF() {
             document.getElementById(divName).append(firstExercise);
             i++
         };
-
     };
-
     setPage('page-1', 4);
     html2canvas(contentPdf).then(canvas=> {
         const img = canvas.toDataURL('image/png');
@@ -222,7 +219,6 @@ function genPDF() {
                 };
             });
         };
-
     });
 };
 
@@ -255,7 +251,7 @@ function fillCells(exerciseCollection, exerciseDivId, type){
         exerciseDivId.appendChild(createNewCell(`exercise${type}Number${n}`));
         const newCell = document.getElementById(`exercise${type}Number${n}`);
 
-        newCell.classList.add('exercise-container')
+        newCell.classList.add('exercise-container');
         newCell.innerHTML = `
         <div class="exercise-cell row ml-4 mr-4">
             <button onclick="chooseExercise('${type}', '${n}')" class="exercise-check col-8 col-md-1 mt-2 mb-2" id= "${type}${n}check"></button>
@@ -328,7 +324,7 @@ function chooseExercise(type, n){
             return size = size - type[n].size;
         };
 
-        function subtractAllQueue(type, type2, idButton2, clickNumber, n){
+        function subtractAllQueue(type, type2, idButton2, clickNumber, n) {
             let x = 0;
 
             type[n].queueNumber = 0;
@@ -344,14 +340,12 @@ function chooseExercise(type, n){
                 //SWAP 0 TO ""
                 if (type[x].queueNumber === 0) {
                     document.getElementById(`${idButton}${x}check`).innerHTML = "";
-                }
+                };
                 if (type2[x].queueNumber === 0) {
                     document.getElementById(`${idButton2}${x}check`).innerHTML = "";
-                }
-
+                };
                 x++;
             };
-
         };
     };
 
@@ -364,13 +358,14 @@ function chooseExercise(type, n){
         type = strengthExerciseCollection;
         createExerciseDiv(idButton);
     };
-}
+};
 
+//SAVING ALL INPUT AND CHOSED DATA
 function saveAll (event){
     const startDate = document.getElementById('start-date').value;
     const comments = document.getElementById('comments').value;
-    patientName = document.getElementById('patient-name').value;
 
+    patientName = document.getElementById('patient-name').value;
     window.scrollTo({ top: 0, behavior: 'smooth' });
     function dateCheck(date){
         if (date.length >  8) {
@@ -380,6 +375,7 @@ function saveAll (event){
             return formattedDate = "";
         };
     };
+    //SAVE INPUT DATA
     dateCheck(startDate);
     $('#content-pdf').css('display', 'inline-block');
     $('#exercise-pdf2').css('display', 'inline-block');
@@ -387,12 +383,15 @@ function saveAll (event){
     datePdf.innerHTML = `Data rozpoczęcia ćwiczeń: ${formattedDate}`;
     frequencyPdf.innerHTML = `Ćwiczenia należy wykonywać ${getInfoAboutFrequency()}.`;
     commentsPdf.innerHTML = `Uwagi: ${comments}`;
+    //CREATING PDF
     genPDF();
     event.preventDefault();
+    //DISABLING BUTTONS
     $('#ready-button').css('display', 'none');
     readyMenuButton.disabled = true;
     $('.exercise-check').prop('disabled', true);
-    $('#restart-button').css('animation', 'clickMe 2s infinite')
+    $('#restart-button').css('animation', 'clickMe 2s infinite');
+    //HIDDING CONTENT-BOX-PDF
     setTimeout(()=>{$('.content-box-pdf').css('display', 'none');}, 1000);
 };
 

@@ -391,13 +391,13 @@ form {
     font-size: 0.8rem;
     text-align: center;
     background-color: var(--light-blue);
-    color: var(--white);
+    color: var(--orange);
     font-family: 'Molle', cursive;
 }
 
 .tag-pdf-2 {
-    font-family: 'Patrick Hand', cursive;
-    font-size: 0.7rem;
+    padding-top: 0.05cm;
+    font-size: 0.6rem;
 }
 
 /* MEDIA */
