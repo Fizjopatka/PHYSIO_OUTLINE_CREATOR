@@ -35,10 +35,10 @@ window.addEventListener('load', ()=> {
         });
 
     fetch("data/strengthExerciseCollection.json")
-    .then(response => response.json())
-    .then(data => {
-        strengthExerciseCollection = data.strengthExerciseCollection;
-        fillCells(strengthExerciseCollection, strengthExercise, 'strength');
+        .then(response => response.json())
+        .then(data => {
+            strengthExerciseCollection = data.strengthExerciseCollection;
+            fillCells(strengthExerciseCollection, strengthExercise, 'strength');
     });
 });
 
@@ -66,44 +66,40 @@ function genPDF() {
         while (i < flexNumber){    
             let firstExercise = exercisePdf.firstChild;
             if (firstExercise === null) {
-                return
+                return;
             };
             document.getElementById(divName).append(firstExercise);
-            i++
+            i++;
         };
     };
     setPage('page-1', 4);
     html2canvas(contentPdf).then(canvas=> {
         const img = canvas.toDataURL('image/png');
         const pdfName = `zestaw-ćwiczeń-dla-${patientName}-PhysioOutline.pdf`;
-        //próbowałam zrobić to \/ lepiej, ale html2canvas wywala mi błędy, będę to poprawiać :D
+        let newPageSize = 4;
+        let pageEdge = 5;
+        let pageNumber = 2;
+
         doc.addImage(img, 'JPEG', 4, 5);
         if (size < 5) {
             doc.save(pdfName);
-        } else if (size > 4) {
-            setPage('page-2', 5);
-            const page2 = document.getElementById('page-2');
+        } else {
+            function createNewPage(){
+                html2canvas(document.getElementById(`page-${pageNumber}`)).then(canvas=> {
+                    const img = canvas.toDataURL('image/png');
 
-            html2canvas(page2).then(canvas=> {
-                const img = canvas.toDataURL('image/png');
-
-                doc.addPage();
-                doc.addImage(img, 'JPEG', 4, 5);
-                if (size < 9) {
+                    doc.addPage();
+                    doc.addImage(img, 'JPEG', 4, 5);
                     doc.save(pdfName);
-                } else if (size > 8) {
-                    setPage('page-3', 9);
-                    const page3 = document.getElementById('page-3');
-
-                    html2canvas(page3).then(canvas=> {
-                        const img = canvas.toDataURL('image/png');
-        
-                        doc.addPage();
-                        doc.addImage(img, 'JPEG', 4, 5);
-                        doc.save(pdfName);
-                    });
-                };
-            });
+                });
+            };
+            while (size > newPageSize) {
+                setPage(`page-${pageNumber}`, pageEdge);
+                createNewPage();
+                newPageSize +=4;
+                pageEdge +=4;
+                pageNumber ++;
+            };
         };
     });
 };
@@ -133,7 +129,7 @@ function createNewCell(name) {
 function fillCells(exerciseCollection, exerciseDivId, type){
     let n = 0;
 
-    while (n < exerciseCollection.length){
+    exerciseCollection.forEach(()=> {
         exerciseDivId.appendChild(createNewCell(`exercise${type}Number${n}`));
         const newCell = document.getElementById(`exercise${type}Number${n}`);
 
@@ -149,7 +145,7 @@ function fillCells(exerciseCollection, exerciseDivId, type){
             <div class="exercise-image"><img src="${exerciseCollection[n].image}"></div>
         </div>`;
         n++;
-    };
+    });
 };
 
 function chooseExercise(type, n){
@@ -160,7 +156,7 @@ function chooseExercise(type, n){
                 <div class="exercise-pdf-column">
                     <div class="exercise-title-pdf mt-1">${type[n].title}</div>
                     <div class="exercise-description-pdf">${type[n].description}</div>
-                    <div id="${idButton[n].repetitions}Div" class="exercise-repetitions-pdf">liczba powtórzeń: ${type[n].repetitions}</div>
+                    <div id="${idButton}${n}repetitionsDiv" class="exercise-repetitions-pdf">liczba powtórzeń: ${type[n].repetitions}</div>
                 </div>
                 <div>
                         <img src=${type[n].image}>
@@ -183,11 +179,12 @@ function chooseExercise(type, n){
             exercisePdf.appendChild(createNewCell(`${idButton}Div${n}`));
             document.getElementById(`${idButton}Div${n}`).innerHTML = exerciseDiv;
             //INPUT REPETITIONS
-            document.getElementById(`${idButton[n].repetitions}Div`).innerHTML = 'liczba powtórzeń: '+ document.getElementById(`input${idButton}${n}`).value;
+            document.getElementById(`${idButton}${n}repetitionsDiv`).innerHTML = 'liczba powtórzeń: '+ document.getElementById(`input${idButton}${n}`).value;
+
             event.preventDefault();
             //RETURN SIZE
             return size = size+ type[n].size;
-        } else if (type[n].trigger) {
+        } else {
             $(`#${idButton}${n}check`).hover(function(){
                 $(this).css("background-color", "var(--grey-80)");
                 }, function(){
@@ -214,7 +211,7 @@ function chooseExercise(type, n){
             let x = 0;
 
             type[n].queueNumber = 0;
-            while (x < type.length) {
+            type.forEach(()=>{
                 if (type[x].queueNumber > clickNumber) {
                     type[x].queueNumber = type[x].queueNumber - 1;
                 };
@@ -231,11 +228,11 @@ function chooseExercise(type, n){
                     document.getElementById(`${idButton2}${x}check`).innerHTML = "";
                 };
                 x++;
-            };
+            });
         };
     };
 
-    if(type === 'stretch'){
+    if (type === 'stretch') {
         const idButton = 'stretch';
         type = stretchExerciseCollection;
         createExerciseDiv(idButton);
