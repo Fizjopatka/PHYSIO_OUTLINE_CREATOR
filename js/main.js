@@ -80,7 +80,10 @@ function genPDF() {
         let pageEdge = 5;
         let pageNumber = 2;
 
+        let saveNumber = 2;
         doc.addImage(img, 'JPEG', 4, 5);
+        //dokończyć numeracje
+        doc.text("1", 195, 283); 
         if (size < 5) {
             doc.save(pdfName);
         } else {
@@ -90,7 +93,10 @@ function genPDF() {
 
                     doc.addPage();
                     doc.addImage(img, 'JPEG', 4, 5);
-                    doc.save(pdfName);
+                    if(Math.ceil(size/4) === saveNumber){
+                        doc.save(pdfName);
+                    };
+                    saveNumber ++;
                 });
             };
             while (size > newPageSize) {
