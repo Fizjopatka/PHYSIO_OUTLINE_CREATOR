@@ -115,7 +115,6 @@ function genPDF() {
 //RADIO INPUT FUNCTION
 function getInfoAboutFrequency() {
     const frequency = document.forms[0];
-    console.log(frequency)
     let i;
 
     for (i = 0; i < frequency.length; i++) {
@@ -207,14 +206,13 @@ function chooseExercise(type, n){
             event.preventDefault();
             if (idButton === "stretch") {
                 subtractAllQueue(stretchExerciseCollection, strengthExerciseCollection, "strength", type[n].queueNumber, n);
-            } else if (idButton === "strength") {
+            } else {
                 subtractAllQueue(strengthExerciseCollection, stretchExerciseCollection, "stretch", type[n].queueNumber, n);
             };
 
             //RETURN SIZE
             return size = size - type[n].size;
         };
-
         function subtractAllQueue(type, type2, idButton2, clickNumber, n) {
             let x = 0;
 
@@ -239,12 +237,11 @@ function chooseExercise(type, n){
             });
         };
     };
-
     if (type === 'stretch') {
         const idButton = 'stretch';
         type = stretchExerciseCollection;
         createExerciseDiv(idButton);
-    } else if(type === 'strength') {
+    } else {
         const idButton = 'strength';
         type = strengthExerciseCollection;
         createExerciseDiv(idButton);
@@ -259,19 +256,13 @@ function saveAll (event){
     patientName = document.getElementById('patient-name').value;
     window.scrollTo({ top: 0, behavior: 'smooth' });
     function dateCheck(date){
-        if (date.length >  8) {
-            formattedDate = date[8]+date[9]+"-"+date[5]+date[6]+"-"+date[0]+date[1]+date[2]+date[3];
-            return formattedDate
-        } else {
-            return formattedDate = "";
-        };
+        return date.length > 8 ? date[8]+date[9]+"-"+date[5]+date[6]+"-"+date[0]+date[1]+date[2]+date[3] : "";
     };
     //SAVE INPUT DATA
-    dateCheck(startDate);
     $('#content-pdf').css('display', 'inline-block');
     $('#exercise-pdf2').css('display', 'inline-block');
     patientNamePdf.innerHTML = `Zestaw ćwiczeń dla ${patientName}`;
-    datePdf.innerHTML = `Data rozpoczęcia ćwiczeń: ${formattedDate}`;
+    datePdf.innerHTML = `Data rozpoczęcia ćwiczeń: ${dateCheck(startDate)}`;
     frequencyPdf.innerHTML = `Ćwiczenia należy wykonywać ${getInfoAboutFrequency()}.`;
     commentsPdf.innerHTML = `Uwagi: ${comments}`;
     //CREATING PDF
