@@ -79,11 +79,11 @@ function genPDF() {
         let newPageSize = 4;
         let pageEdge = 5;
         let pageNumber = 2;
-
         let saveNumber = 2;
+        let bottomPageNumber = 2;
+        
         doc.addImage(img, 'JPEG', 4, 5);
-        //dokończyć numeracje
-        doc.text("1", 195, 283); 
+        doc.text("1", 195, 285); 
         if (size < 5) {
             doc.save(pdfName);
         } else {
@@ -93,10 +93,12 @@ function genPDF() {
 
                     doc.addPage();
                     doc.addImage(img, 'JPEG', 4, 5);
-                    if(Math.ceil(size/4) === saveNumber){
+                    doc.text(`${bottomPageNumber}`, 195, 285); 
+                    if(Math.ceil(size/4) === saveNumber) {
                         doc.save(pdfName);
                     };
                     saveNumber ++;
+                    bottomPageNumber++;
                 });
             };
             while (size > newPageSize) {
@@ -113,11 +115,11 @@ function genPDF() {
 //RADIO INPUT FUNCTION
 function getInfoAboutFrequency() {
     const frequency = document.forms[0];
-    let frequencyText = "";
+    console.log(frequency)
     let i;
 
     for (i = 0; i < frequency.length; i++) {
-        if (frequency[i].checked) {
+       if (frequency[i].checked) {
             frequencyText = frequency[i].value;
         };
     };
