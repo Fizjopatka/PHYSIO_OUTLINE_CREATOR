@@ -12,17 +12,47 @@ const exercisePdf2 = document.getElementById('exercise-pdf2');
 const readyButton = document.getElementById('ready-button');
 const readyMenuButton = document.getElementById('ready-menu-button');
 const restartButton = document.getElementById('restart-button');
+const sortStretchButton = document.getElementById('sort-stretch-button');
+const sortStrengthButton = document.getElementById('sort-strength-button');
 let stretchExerciseCollection = "";
 let strengthExerciseCollection = "";
 let patientName = '';
 let size = 1;
 let queueNumber = 0;
+let sortStretchTrigger = false;
+let sortStrengthTrigger = false;
 
 //LISTENERS
 [readyButton, readyMenuButton].forEach(button => button.addEventListener('click', saveAll));
 restartButton.addEventListener('click', ()=> {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(()=>{ location.reload()}, 500);
+});
+sortStretchButton.addEventListener('click', ()=>{
+    sortStretchTrigger ?  hideSort() : showSort();
+    function showSort() {
+        $('#stretch-sort-text').css('transform' , 'translate(0, 4rem)');
+        $('.relative-box').css('height', '8rem');
+        sortStretchTrigger = true;
+    };
+    function hideSort() {
+        $('#stretch-sort-text').css('transform' , 'translate(0, 0)');
+        $('.relative-box').css('height', '4rem');
+        sortStretchTrigger = false;
+    };
+});
+sortStrengthButton.addEventListener('click', ()=>{
+    sortStrengthTrigger ?  hideSort() : showSort();
+    function showSort() {
+        $('#strength-sort-text').css('transform' , 'translate(0, 4rem)');
+        $('.relative-box').css('height', '8rem');
+        sortStrengthTrigger = true;
+    };
+    function hideSort() {
+        $('#strength-sort-text').css('transform' , 'translate(0, 0)');
+        $('.relative-box').css('height', '4rem');
+        sortStrengthTrigger = false;
+    };
 });
 
 //EXERCISES 
@@ -103,7 +133,7 @@ function genPDF() {
             };
             while (size > newPageSize) {
                 setPage(`page-${pageNumber}`, pageEdge);
-                createNewPage();
+                setTimeout(createNewPage(), 500);
                 newPageSize +=4;
                 pageEdge +=4;
                 pageNumber ++;
@@ -114,15 +144,11 @@ function genPDF() {
 
 //RADIO INPUT FUNCTION
 function getInfoAboutFrequency() {
-    const frequency = document.forms[0];
-    let i;
+    const frequency = Array.from(document.forms[0]);
 
-    for (i = 0; i < frequency.length; i++) {
-       if (frequency[i].checked) {
-            frequencyText = frequency[i].value;
-        };
-    };
-    return frequencyText;
+    frequencyText = frequency.find(freq => freq.checked);
+    frequencyText = frequencyText.value
+    return frequencyText
 };
 
 function createNewCell(name) {

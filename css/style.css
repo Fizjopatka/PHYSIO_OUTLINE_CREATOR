@@ -17,7 +17,7 @@ body {
 }
 
 .title-navbar {
-    z-index: 2000;
+    z-index: 999999;
     background-color: var(--light-blue);
     height: 6.3rem;
 
@@ -177,6 +177,8 @@ form {
     background-color: var(--grey);
     font-family: 'Patrick Hand SC', cursive;
     text-shadow: -1px 0 var(--black), 0 1px var(--black), 1px 0 var(--black), 0 -1px var(--black);
+    z-index: 9999;
+    transition: 1s;
 }
 
 .second-title {
@@ -232,6 +234,37 @@ form {
     background-color: var(--jade);
     transition: 0.5s;
 }
+
+.sort-img {
+    background-color: var(--white-80);
+    padding: 0.2rem;
+    border-radius: 2px;
+    transition: 0.5s;
+    box-shadow: 0px 0px 3px var(--black);  
+    cursor: pointer;
+}
+
+.sort-img:hover {
+    transition: 0.5s;
+    background-color: var(--white);
+}
+
+.relative-box {
+    position: relative;
+    height: 4rem;
+    transition: 1s;
+}
+
+.sort-text{
+    top: -4rem;
+    position: relative;
+    z-index: 999;
+    background-color: var(--light-grey);
+    text-shadow: none;
+    color: var(--black);
+    font-size: 1.3rem;
+}
+
 /* HOW IT WORK */
 .how-it-work {
     border-radius: 0px 4px 4px 0px;
