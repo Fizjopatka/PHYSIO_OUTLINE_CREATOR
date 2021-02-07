@@ -95,6 +95,7 @@ function genPDF() {
         exercisePdf2.appendChild(createNewCell(divName))
         while (i < flexNumber){    
             let firstExercise = exercisePdf.firstChild;
+
             if (firstExercise === null) {
                 return;
             };
@@ -133,7 +134,7 @@ function genPDF() {
             };
             while (size > newPageSize) {
                 setPage(`page-${pageNumber}`, pageEdge);
-                setTimeout(createNewPage(), 500);
+                createNewPage();
                 newPageSize +=4;
                 pageEdge +=4;
                 pageNumber ++;
