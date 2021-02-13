@@ -138,7 +138,6 @@ function genPDF() {
 
     setPage('page-1', 4);
     html2canvas(contentPdf).then(canvas=> {
-        const img = canvas.toDataURL('image/png');
         const pdfName = `zestaw-ćwiczeń-dla-${patientName}-PhysioOutline.pdf`;
         let newPageSize = 4;
         let pageEdge = 5;
@@ -146,13 +145,12 @@ function genPDF() {
         let saveNumber = 2;
         let bottomPageNumber = 2;
         
-        doc.addImage(img, 'JPEG', 4, 5);
+        doc.addImage(canvas.toDataURL('image/png'), 'JPEG', 4, 5);
         doc.text("1", 195, 285); 
         if (size < 5) {
             doc.save(pdfName);
         } else {
             while (size > newPageSize) {
-                setPage(`page-${pageNumber}`, pageEdge);
                 createNewPage();
                 pageNumber ++;
                 newPageSize +=4;
@@ -161,11 +159,10 @@ function genPDF() {
         };
         //FUNCTION CREATE NEW PAGE
         function createNewPage(){
+            setPage(`page-${pageNumber}`, pageEdge);
             html2canvas(document.getElementById(`page-${pageNumber}`)).then(canvas=> {
-                const img = canvas.toDataURL('image/png');
-    
                 doc.addPage();
-                doc.addImage(img, 'JPEG', 4, 5);
+                doc.addImage(canvas.toDataURL('image/png'), 'JPEG', 4, 5);
                 doc.text(`${bottomPageNumber}`, 195, 285); 
                 if(Math.ceil(size/4) === saveNumber) {
                     doc.save(pdfName);
