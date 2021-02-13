@@ -14,6 +14,15 @@ const readyMenuButton = document.getElementById('ready-menu-button');
 const restartButton = document.getElementById('restart-button');
 const sortStretchButton = document.getElementById('sort-stretch-button');
 const sortStrengthButton = document.getElementById('sort-strength-button');
+const sortStretchAllButton = document.getElementById('sort-stretch-all-button');
+const sortStretchTorsoButton = document.getElementById('sort-stretch-torso-button');
+const sortStretchArmsButton = document.getElementById('sort-stretch-arms-button');
+const sortStretchLegsButton = document.getElementById('sort-stretch-legs-button');
+const sortStrengthAllButton = document.getElementById('sort-strength-all-button');
+const sortStrengthBackButton = document.getElementById('sort-strength-back-button');
+const sortStrengthStomachButton = document.getElementById('sort-strength-stomach-button');
+const sortStrengthLegsButton = document.getElementById('sort-strength-legs-button');
+const sortStrengthArmsButton = document.getElementById('sort-strength-arms-button');
 let stretchExerciseCollection = "";
 let strengthExerciseCollection = "";
 let patientName = '';
@@ -31,29 +40,31 @@ restartButton.addEventListener('click', ()=> {
 sortStretchButton.addEventListener('click', ()=>{
     sortStretchTrigger ?  hideSort() : showSort();
     function showSort() {
-        $('#stretch-sort-text').css('transform' , 'translate(0, 4rem)');
-        $('.relative-box').css('height', '8rem');
+        $('#stretch-sort-text').css('transform' , 'translate(0, 5rem)');
+        $('.relative-box').css('height', '10rem');
         sortStretchTrigger = true;
     };
     function hideSort() {
         $('#stretch-sort-text').css('transform' , 'translate(0, 0)');
-        $('.relative-box').css('height', '4rem');
+        $('.relative-box').css('height', '5rem');
         sortStretchTrigger = false;
     };
 });
 sortStrengthButton.addEventListener('click', ()=>{
     sortStrengthTrigger ?  hideSort() : showSort();
     function showSort() {
-        $('#strength-sort-text').css('transform' , 'translate(0, 4rem)');
-        $('.relative-box').css('height', '8rem');
+        $('#strength-sort-text').css('transform' , 'translate(0, 5rem)');
+        $('.relative-box-2').css('height', '10rem');
         sortStrengthTrigger = true;
     };
     function hideSort() {
         $('#strength-sort-text').css('transform' , 'translate(0, 0)');
-        $('.relative-box').css('height', '4rem');
+        $('.relative-box-2').css('height', '5rem');
         sortStrengthTrigger = false;
     };
 });
+
+[sortStretchAllButton, sortStretchTorsoButton, sortStretchArmsButton, sortStretchLegsButton, sortStrengthAllButton, sortStrengthBackButton, sortStrengthStomachButton, sortStrengthLegsButton, sortStrengthArmsButton].forEach(button => button.addEventListener('click', sortByItem));
 
 //EXERCISES 
 window.addEventListener('load', ()=> {
@@ -73,6 +84,42 @@ window.addEventListener('load', ()=> {
 });
 
 //FUNCTIONS
+//SORT FUNCTION 
+function sortByItem(event){
+    let exerciseArray 
+    let type
+
+    getData();
+    exerciseArray.forEach(getExercise);
+    //FUNCTIONS
+    function getData(){
+        if ($(`#${event.originalTarget.id}`).hasClass('stretch')){
+            exerciseArray = Array.from(stretchExerciseCollection);
+            cleanButtonsStretch();
+            type = 'stretch';
+        } else {
+            exerciseArray = Array.from(strengthExerciseCollection);
+            cleanButtonsStrength();
+            type ='strength';
+        }
+    };
+    function getExercise(exercise, index){
+        if (exercise.sort.includes(event.originalTarget.value)){
+            $(`#exercise${type}Number${index}`).css('display', 'inline-block');
+            $(`#${event.originalTarget.id}`).addClass('active-button');
+        } else {
+            $(`#exercise${type}Number${index}`).css('display', 'none');
+        };
+    };
+    function cleanButtonsStretch() {
+        $('#sort-stretch-all-button, #sort-stretch-torso-button, #sort-stretch-arms-button, #sort-stretch-legs-button').removeClass('active-button');
+    };
+    function cleanButtonsStrength() {
+        $('#sort-strength-all-button, #sort-strength-back-button, #sort-strength-stomach-button, #sort-strength-legs-button, #sort-strength-arms-button').removeClass('active-button');
+    };
+    event.preventDefault();
+}
+
 //CLOSE SIDE WINDOW 
 function closeWindow(){
     $('.how-it-work').css('display', 'none');
@@ -89,20 +136,6 @@ function checkWindow(){
 function genPDF() {
     const doc = new jsPDF();
 
-    function setPage(divName, flexNumber) {
-        let i = 1;
-
-        exercisePdf2.appendChild(createNewCell(divName))
-        while (i < flexNumber){    
-            let firstExercise = exercisePdf.firstChild;
-
-            if (firstExercise === null) {
-                return;
-            };
-            document.getElementById(divName).append(firstExercise);
-            i++;
-        };
-    };
     setPage('page-1', 4);
     html2canvas(contentPdf).then(canvas=> {
         const img = canvas.toDataURL('image/png');
@@ -118,29 +151,46 @@ function genPDF() {
         if (size < 5) {
             doc.save(pdfName);
         } else {
-            function createNewPage(){
-                html2canvas(document.getElementById(`page-${pageNumber}`)).then(canvas=> {
-                    const img = canvas.toDataURL('image/png');
-
-                    doc.addPage();
-                    doc.addImage(img, 'JPEG', 4, 5);
-                    doc.text(`${bottomPageNumber}`, 195, 285); 
-                    if(Math.ceil(size/4) === saveNumber) {
-                        doc.save(pdfName);
-                    };
-                    saveNumber ++;
-                    bottomPageNumber++;
-                });
-            };
             while (size > newPageSize) {
                 setPage(`page-${pageNumber}`, pageEdge);
                 createNewPage();
+                pageNumber ++;
                 newPageSize +=4;
                 pageEdge +=4;
-                pageNumber ++;
             };
         };
+        //FUNCTION CREATE NEW PAGE
+        function createNewPage(){
+            html2canvas(document.getElementById(`page-${pageNumber}`)).then(canvas=> {
+                const img = canvas.toDataURL('image/png');
+    
+                doc.addPage();
+                doc.addImage(img, 'JPEG', 4, 5);
+                doc.text(`${bottomPageNumber}`, 195, 285); 
+                if(Math.ceil(size/4) === saveNumber) {
+                    doc.save(pdfName);
+                };
+                saveNumber ++;
+                bottomPageNumber ++;
+            });
+        };
+
     });
+    //FUNCTION SET PAGE
+    function setPage(divName, flexNumber) {
+        let i = 1;
+
+        exercisePdf2.appendChild(createNewCell(divName))
+        while (i < flexNumber){    
+            let firstExercise = exercisePdf.firstChild;
+
+            if (firstExercise === null) {
+                return;
+            };
+            document.getElementById(divName).append(firstExercise);
+            i++;
+        };
+    };
 };
 
 //RADIO INPUT FUNCTION
@@ -301,7 +351,7 @@ function saveAll (event){
     $('.exercise-check').prop('disabled', true);
     $('#restart-button').css('animation', 'clickMe 2s infinite');
     //HIDDING CONTENT-BOX-PDF
-    setTimeout(()=>{$('.content-box-pdf').css('display', 'none');}, 1000);
+    //setTimeout(()=>{$('.content-box-pdf').css('display', 'none');}, 1000);
 };
 
 //APP

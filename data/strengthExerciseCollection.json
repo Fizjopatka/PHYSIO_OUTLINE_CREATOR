@@ -7,7 +7,8 @@
             "image": "img/strength0.png",
             "repetitions": "3 x 30sek",
             "trigger": false,
-            "queueNumber": 0
+            "queueNumber": 0,
+            "sort": ["all","legs", "back"]
         },
         {
             "title": "Wzmacnianie mm. posturalnych, mm. pośladkowych, mm. grzbietu 2",
@@ -16,7 +17,8 @@
             "image": "img/strength1.png",
             "repetitions": "10 x strona x 4sek",
             "trigger": false,
-            "queueNumber": 0
+            "queueNumber": 0,
+            "sort": ["all","legs", "back"]
         },
         {
             "title":"Wzmacnianie mm. posturalnych, mm. pośladkowych, mm. grzbietu 3",
@@ -25,7 +27,8 @@
             "image":"img/strength6.png",
             "repetitions":"3 x 30sek",
             "trigger":false,
-            "queueNumber":0
+            "queueNumber":0,
+            "sort": ["all","legs", "back"]
         },
         {
             "title":"Wzmacnianie mm. pośladkowych, mm. głębokich tułowia",
@@ -34,7 +37,8 @@
             "image":"img/strength2.png",
             "repetitions":"10 x 4sek",
             "trigger":false,
-            "queueNumber":0
+            "queueNumber":0,
+            "sort": ["all","legs", "back", "stomach"]
         },
         {
             "title":"Wzmacnianie mm. grzbietu, mm. kończyn górnych",
@@ -43,7 +47,8 @@
             "image":"img/strength3.png",
             "repetitions":"15x",
             "trigger":false,
-            "queueNumber":0
+            "queueNumber":0,
+            "sort": ["all","arms", "back"]
         },
         {
             "title":"Wzmacnianie mm. posturalnych, mm. brzucha, mm. stożka rotatorów",
@@ -52,7 +57,8 @@
             "image":"img/strength4.png",
             "repetitions":"3 x 15sek x strona",
             "trigger":false,
-            "queueNumber":0
+            "queueNumber":0,
+            "sort": ["all","arms", "back", "stomach"]
         },
         {
             "title":"Wzmacnianie mm. czworogłowych, mm. pośladkowych, mm. kulszowo-goleniowych",
@@ -61,7 +67,8 @@
             "image":"img/strength5.png",
             "repetitions":"3 serie x 10",
             "trigger":false,
-            "queueNumber":0
+            "queueNumber":0,
+            "sort": ["all","legs", "stomach"]
         }
     ]
 }

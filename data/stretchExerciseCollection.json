@@ -7,7 +7,8 @@
             "image":"img/stretch0.png",
             "repetitions":"10 x 4sek x strona",
             "trigger":false,
-            "queueNumber":0
+            "queueNumber":0,
+            "sort": ["all","legs"]
         },
         {
             "title":"Rozciąganie mm. kulszowo-goleniowych 2",
@@ -16,7 +17,8 @@
             "image":"img/stretch6.png",
             "repetitions": "10 x 4sek",
             "trigger":false,
-            "queueNumber":0
+            "queueNumber":0,
+            "sort": ["all","legs"]
         },
         {
             "title":"Rozciąganie mm. pośladkowych",
@@ -25,7 +27,8 @@
             "image":"img/stretch1.png",
             "repetitions":"40sek x strona",
             "trigger":false,
-            "queueNumber":0
+            "queueNumber":0,
+            "sort": ["all","legs"]
         },
         {
             "title":"Rozciąganie mm. piersiowych",
@@ -34,7 +37,8 @@
             "image":"img/stretch2.png",
             "repetitions":"40sek x strona",
             "trigger":false,
-            "queueNumber":0
+            "queueNumber":0,
+            "sort": ["all","arms", "torso"]
         },
         {
             "title":"Rozciąganie mm. czworogłowych",
@@ -43,7 +47,8 @@
             "image":"img/stretch3.png",
             "repetitions":"40sek x strona",
             "trigger":false,
-            "queueNumber":0
+            "queueNumber":0,
+            "sort": ["all","legs"]
         },
         {
             "title":"Rozciąganie mm. czworobocznych lędźwi",
@@ -52,7 +57,8 @@
             "image":"img/stretch4.png",
             "repetitions":"10 x 4sek x strona",
             "trigger":false,
-            "queueNumber":0
+            "queueNumber":0,
+            "sort": ["all","torso"]
         },
         {
             "title":"Rozciąganie mm. biodrowo-lędźwiowych",
@@ -61,7 +67,8 @@
             "image":"img/stretch5.png",
             "repetitions":"40sek x strona",
             "trigger":false,
-            "queueNumber":0
+            "queueNumber":0,
+            "sort": ["all","legs"]
         }   
     ]
 }
