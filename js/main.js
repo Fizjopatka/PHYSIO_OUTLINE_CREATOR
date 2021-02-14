@@ -93,20 +93,22 @@ function sortByItem(event){
     exerciseArray.forEach(getExercise);
     //FUNCTIONS
     function getData(){
-        if ($(`#${event.originalTarget.id}`).hasClass('stretch')){
+        if ($(`#${event.target.id}`).hasClass('stretch')){
             exerciseArray = Array.from(stretchExerciseCollection);
             cleanButtonsStretch();
             type = 'stretch';
+            event.preventDefault();
         } else {
             exerciseArray = Array.from(strengthExerciseCollection);
             cleanButtonsStrength();
             type ='strength';
+            event.preventDefault();
         }
     };
     function getExercise(exercise, index){
-        if (exercise.sort.includes(event.originalTarget.value)){
+        if (exercise.sort.includes(event.target.value)){
             $(`#exercise${type}Number${index}`).css('display', 'inline-block');
-            $(`#${event.originalTarget.id}`).addClass('active-button');
+            $(`#${event.target.id}`).addClass('active-button');
         } else {
             $(`#exercise${type}Number${index}`).css('display', 'none');
         };
@@ -117,7 +119,7 @@ function sortByItem(event){
     function cleanButtonsStrength() {
         $('#sort-strength-all-button, #sort-strength-back-button, #sort-strength-stomach-button, #sort-strength-legs-button, #sort-strength-arms-button').removeClass('active-button');
     };
-    event.preventDefault();
+
 }
 
 //CLOSE SIDE WINDOW 
@@ -171,7 +173,6 @@ function genPDF() {
                 bottomPageNumber ++;
             });
         };
-
     });
     //FUNCTION SET PAGE
     function setPage(divName, flexNumber) {
@@ -348,7 +349,7 @@ function saveAll (event){
     $('.exercise-check').prop('disabled', true);
     $('#restart-button').css('animation', 'clickMe 2s infinite');
     //HIDDING CONTENT-BOX-PDF
-    //setTimeout(()=>{$('.content-box-pdf').css('display', 'none');}, 1000);
+    setTimeout(()=>{$('.content-box-pdf').css('display', 'none');}, 1000);
 };
 
 //APP
