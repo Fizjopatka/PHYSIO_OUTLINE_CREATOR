@@ -260,9 +260,6 @@ function chooseExercise(type, n){
             //APPEND CHILD + INNER HTML
             exercisePdf.appendChild(createNewCell(`${idButton}Div${n}`));
             document.getElementById(`${idButton}Div${n}`).innerHTML = exerciseDiv;
-            //INPUT REPETITIONS
-            document.getElementById(`${idButton}${n}repetitionsDiv`).innerHTML = 'liczba powtórzeń: '+ document.getElementById(`input${idButton}${n}`).value;
-
             event.preventDefault();
             //RETURN SIZE
             return size = size+ type[n].size;
@@ -330,9 +327,26 @@ function saveAll (event){
 
     patientName = document.getElementById('patient-name').value;
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    //DATA FUNCTION
     function dateCheck(date){
         return date.length > 8 ? date[8]+date[9]+"-"+date[5]+date[6]+"-"+date[0]+date[1]+date[2]+date[3] : "";
     };
+    //REPETITONS
+    function saveRepetitions(){
+        getInputRepetitions('stretch', strengthExerciseCollection);
+        getInputRepetitions('strength', strengthExerciseCollection);
+        //FUNCTION
+        function getInputRepetitions(idButton, exerciseCollection) {
+            let n = 0;
+
+            exerciseArray = Array.from(exerciseCollection);
+            exerciseArray.forEach(()=> {
+                document.getElementById(`${idButton}${n}repetitionsDiv`) ? document.getElementById(`${idButton}${n}repetitionsDiv`).innerHTML = 'liczba powtórzeń: '+ document.getElementById(`input${idButton}${n}`).value : null;
+                n++;
+            });
+        };
+    }
+    saveRepetitions();
     //SAVE INPUT DATA
     $('#content-pdf').css('display', 'inline-block');
     $('#exercise-pdf2').css('display', 'inline-block');
